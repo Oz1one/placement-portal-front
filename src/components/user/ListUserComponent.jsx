@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React from "react";
 import ApiService from "../../service/ApiService";
 
-class ListUserComponent extends Component {
+
+
+class ListUserComponent extends React.Component{
+
 
     constructor(props) {
         super(props)
@@ -9,10 +12,7 @@ class ListUserComponent extends Component {
             users: [],
             message: null
         }
-        this.deleteUser = this.deleteUser.bind(this);
-        this.editUser = this.editUser.bind(this);
-        this.addUser = this.addUser.bind(this);
-        this.reloadUserList = this.reloadUserList.bind(this);
+       
     }
 
     componentDidMount() {
@@ -31,30 +31,12 @@ class ListUserComponent extends Component {
             // })
     }
 
-    deleteUser(userId) {
-        ApiService.deleteUser(userId)
-           .then(res => {
-               this.setState({message : 'User deleted successfully.'});
-               this.setState({users: this.state.users.filter(user => user.id !== userId)});
-           })
-
-    }
-
-    editUser(id) {
-        window.localStorage.setItem("userId", id);
-        this.props.history.push('/edit-user');
-    }
-
-    addUser() {
-        window.localStorage.removeItem("userId");
-        this.props.history.push('/add-user');
-    }
 
     render() {
         return (
             <div>
-                <h2 className="text-center">User Details</h2>
-                <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addUser()}> Add User</button>
+                <h2 className="text-center">Student Details</h2>
+                
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -76,10 +58,6 @@ class ListUserComponent extends Component {
                                         <td>{user.userName}</td>
                                         <td>{user.age}</td>
                                         <td>{user.salary}</td>
-                                        <td>
-                                            <button className="btn btn-success" onClick={() => this.deleteUser(user.id)}> Delete</button>
-                                            <button className="btn btn-success" onClick={() => this.editUser(user.id)} style={{marginLeft: '20px'}}> Edit</button>
-                                        </td>
                                     </tr>
                             )
                         }
@@ -92,4 +70,4 @@ class ListUserComponent extends Component {
 
 }
 
-export default ListUserComponent;
+export default ListUserComponent

@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
 import './AddUserComponent.css'
 
-class AddUserComponent extends Component{
+class AuthUserComponent extends Component{
 
     constructor(props){
         super(props);
         this.state ={
             userName: '',
             password: '',
-
+            
             message: null
         }
         this.saveUser = this.saveUser.bind(this);
@@ -40,7 +40,7 @@ class AddUserComponent extends Component{
         return(
             <div className='signupScreen'>
                 <form>
-                <h1>Sign Up!</h1>
+                <h1>Sign in!</h1>
                 <div className="form-group">
                     <label>User Name:</label>
                     <input type="text" placeholder="userName" name="userName" className="form-control" value={this.state.userName} onChange={this.onChange}/>
@@ -49,13 +49,10 @@ class AddUserComponent extends Component{
                     <label>Password:</label>
                     <input type="password" placeholder="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange}/>
                 </div>
-                <div className="form-group">
-                    <label>Confirm Password:</label>
-                    <input type="password" placeholder="confirm password" name="confirm-password" className="form-control" value={this.state.confirmPassword} onChange={this.onChange}/>
-                </div>
-                <button className="btn btn-success" onClick={this.saveUser}>Sign Up</button>
-                <h4><span className="signupScreen_gray">Already a member? </span>
-                <span className="signupScreen_link" >Sign In Now.</span>
+                
+                <button className="btn btn-success" onClick={this.saveUser}>Sign In</button>
+                <h4><span className="signupScreen_gray">Not a member? </span>
+                <span className="signupScreen_link" >Register Now.</span>
                 </h4>
             </form>
     </div>
@@ -63,4 +60,4 @@ class AddUserComponent extends Component{
     }
 }
 
-export default AddUserComponent;
+export default AuthUserComponent;

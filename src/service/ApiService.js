@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = 'http://localhost:8080/users';
+const USER_API_BASE_URL = 'http://localhost:8080/students';
 
 class ApiService {
 
@@ -16,8 +16,13 @@ class ApiService {
         return axios.delete(USER_API_BASE_URL + '/' + userId);
     }
 
-    addUser(user) {
-        return axios.post(""+USER_API_BASE_URL, user);
+    addUser(student, course) {
+        return axios.post(""+USER_API_BASE_URL+'/'+ course.year+'/'+course.batch +'/'+course.course,student);
+
+    }
+
+    addLink(link) {
+        return axios.post(""+USER_API_BASE_URL, link);
     }
 
     editUser(user) {

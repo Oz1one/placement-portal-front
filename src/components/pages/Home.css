@@ -1,0 +1,11 @@
+.footer{
+    background-color: #004080;
+}
+.footer>div{
+    color: #fff;
+}
+.cdaclogo{
+    align-items:center ;
+    height: 30px;
+    width: 100px;
+}

@@ -1,13 +1,13 @@
 import React from 'react';
-import '../../App.css';
+
 import './years.css'
 
 export default function Years() {
 
 
-  return <div>
+  return <div className='center1'>
     <>
-
+    <div className='center'>
     <span>Year</span>
     <select>
       <option>2018</option>
@@ -27,7 +27,8 @@ export default function Years() {
       <option>DITISS</option>
       <option>DESD</option>
     </select>
-    <button className='btn' >Search</button>
+    <button className='btn button1' >Search</button>
+    </div>
     </>
   </div>;
 }

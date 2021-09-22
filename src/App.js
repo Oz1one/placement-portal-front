@@ -9,8 +9,6 @@ import ContactUs from './components/pages/ContactUs';
 import Dummy from './components/pages/Dummy';
 import Dummy2 from './components/pages/Dummy2';
 import AuthUserComponent from './components/user/AuthUserComponent'
-import ListUserComponent from './components/user/ListUserComponent';
-import SelectionComponent from './components/user/SelectionComponent'
 import RegisterUserComponent from './components/user/RegisterUserComponent';
 function App() {
   return (
@@ -18,7 +16,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/year' component={SelectionComponent} />
+        <Route path='/year' component={RegisterUserComponent} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact-us' component={ContactUs} />
         <Route path='/sign-in' component={AuthUserComponent} />

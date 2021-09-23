@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import ApiService from "../../service/ApiService";
 const year = [
     {
@@ -152,7 +152,8 @@ class RegisterUserComponent extends Component{
               behavior: 'smooth',
             });
           }
-        
+
+          
 
     render() {
         return(
@@ -166,7 +167,7 @@ class RegisterUserComponent extends Component{
           <legend>Batch Details!</legend>
             <div className="select-container">
               <span>Year</span>
-              <select value={this.state.year} onChange={this.onChange}>
+              <select name='year' value={this.state.year} onChange={this.onChange}>
                 {year.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}
@@ -175,7 +176,7 @@ class RegisterUserComponent extends Component{
 
             <div className="select-container">
             <span>Batch</span>
-              <select value={this.state.batch} onChange={this.onChange}>
+              <select name='batch' value={this.state.batch} onChange={this.onChange}>
                 {batch.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}
@@ -184,7 +185,7 @@ class RegisterUserComponent extends Component{
 
             <div className="select-container">
             <span>Course</span>
-              <select value={this.state.course} onChange={this.onChange}>
+              <select name='course' value={this.state.course} onChange={this.onChange}>
                 {course.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}

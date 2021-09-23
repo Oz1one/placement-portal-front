@@ -10,13 +10,14 @@ import Dummy from './components/pages/Dummy';
 import Dummy2 from './components/pages/Dummy2';
 import AuthUserComponent from './components/user/AuthUserComponent'
 import RegisterUserComponent from './components/user/RegisterUserComponent';
+import ListUserComponent from './components/user/ListUserComponent';
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/year' component={RegisterUserComponent} />
+        <Route path='/student' component={ListUserComponent} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact-us' component={ContactUs} />
         <Route path='/sign-in' component={AuthUserComponent} />

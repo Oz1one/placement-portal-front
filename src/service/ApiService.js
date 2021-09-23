@@ -16,7 +16,7 @@ class ApiService {
         return axios.delete(USER_API_BASE_URL + '/' + userId);
     }
 
-    addUser(student, course) {
+    addStudent(student, course) {
         return axios.post(""+USER_API_BASE_URL+'/'+ course.year+'/'+course.batch +'/'+course.course,student);
 
     }
@@ -25,6 +25,10 @@ class ApiService {
         return axios.post(""+USER_API_BASE_URL, link);
     }
 
+    addUser(user) {
+        return axios.post(""+USER_API_BASE_URL, user);
+    }
+    
     editUser(user) {
         return axios.put(USER_API_BASE_URL + '/' + user.id, user);
     }

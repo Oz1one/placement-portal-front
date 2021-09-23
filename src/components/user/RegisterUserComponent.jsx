@@ -113,11 +113,12 @@ class RegisterUserComponent extends Component{
           studentId:'',
             message: null
         }
-        this.saveUser = this.saveUser.bind(this);
+        this.saveStudent = this.saveStudent.bind(this);
     }
 
-    saveUser = (e) => {
+    saveStudent = (e) => {
         e.preventDefault();
+        this.handleScroll();
         let course={year:this.state.year, batch:this.state.batch, course:this.state.course}
         let student = {firstName: this.state.firstName,lastName:this.state.lastName, prn:this.state.prn,
             dob:this.state.dob,email:this.state.email, mobNo:this.state.mobNo, address:this.state.address,
@@ -126,17 +127,17 @@ class RegisterUserComponent extends Component{
             markPostGrad:this.state.markPostGrad, markCCEE:this.state.markCCEE,
             passingYear10th:this.state.passingYear10th, passingYear12th:this.state.passingYear12th,
             passingYearDiploma:this.state.passingYearDiploma, passingYearGrad:this.state.passingYearGrad, passingYearPostGrad:this.state.passingYearPostGrad};
-        ApiService.addUser(student, course)
+        ApiService.addStudent(student, course)
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
+                this.setState({studentId: resp.data});
                 this.setState({message : 'User added successfully.'});
-                this.props.history.push('/users');
             }).catch( err=>{
               //  console.error(err);
                 console.error("in err ",err.response.data);
                 //err.response.data => DTO on the server side : ErrorResponse
                 alert(err.response.data.message);             
-                this.props.history.push('/users');
+                
             })
             
     }
@@ -316,7 +317,7 @@ class RegisterUserComponent extends Component{
 
                 
 
-                <button href='#sec' className="btn btn-success" onClick={this.saveUser} onClick={this.handleScroll}>Register to Continue!</button>
+                <button href='#sec' className="btn btn-success" onClick={this.saveStudent} >Register to Continue!</button>
             </form>
 <br/>
 <br/>

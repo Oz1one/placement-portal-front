@@ -1,12 +1,46 @@
-img{
+.img111{
     max-width:150px;
     height: auto;
     margin:15px;
+    border-radius: 50%;
 
 }
 
 .border11{
     border:2px solid black;
-    max-width:fit-content
+    max-width:fit-content;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
+}
+
+.do-center{
+    position: absolute;
+    top: 30%;
+    right: 42%;
+    font-size:x-large;
+}
+
+.do-center-2{
+    position: absolute;
+    top: 50%;
+    right: 40.6%;
+    font-size:x-large;  
+}
+
+.do-center-3{
+    font-size: x-large;
+    margin-top: 10px;
+}
+
+.do-center-4{
+    top: 100%;
+    margin-top: 17%;
+}
+
+.btn-space{
+    margin:5px;
+}
+
+.btn-space-2{
+     margin-left: 13px;
 }

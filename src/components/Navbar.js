@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import {Logout} from './Logout'
 
 
-function Navbar(props) {
+
+function Navbar() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+ 
+ 
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
@@ -80,15 +84,19 @@ function Navbar(props) {
           <li>
             <Link
               to='/sign-in'
-              className='nav-links-mobile'
+              className= 'nav-links-mobile'
               onClick={closeMobileMenu}
             >
               Sign in
             </Link>
+
+            
+            
+            
             
           </li>
         </ul>
-        <Button />
+      <Button />
       </nav>
     </>
   );

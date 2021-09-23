@@ -22,6 +22,7 @@ class AuthUserComponent extends Component{
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({message : 'User added successfully.'});
+                window.sessionStorage.setItem('studentobj', resp.data);
                 this.props.history.push({
                     pathname: '/profile',
                    
@@ -43,7 +44,7 @@ class AuthUserComponent extends Component{
         this.setState({ [e.target.name]: e.target.value });
     
         sendToRegister(){
-            window.localStorage.removeItem("userId");
+            
             this.props.history.push('/register-user');
         }
 

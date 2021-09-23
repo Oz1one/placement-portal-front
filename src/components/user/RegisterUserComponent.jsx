@@ -101,19 +101,34 @@ class RegisterUserComponent extends Component{
             passingYearGrad: "",
             passingYearPostGrad:"",
 
-            year: "",
-          batch: "",
-          course: "",
+            year: "2019",
+          batch: "jan",
+          course: "dac",
 
           userName:"",
           password:"",
           confirmPassword:"",
           role:"",
 
-          studentId:'',
+          studentId:'1',
             message: null
         }
         this.saveStudent = this.saveStudent.bind(this);
+        this.sendCredentials= this.sendCredentials.bind(this);
+    }
+
+    sendCredentials=(e)=>{
+      e.preventDefault();
+      let cred={userName:this.state.userName, password:this.state.password }
+      ApiService.addCred(cred).then(resp=>{
+        console.log(resp.data);
+        this.setState({message : 'User added successfully.'});
+      }).catch(err=>{
+        console.error("in err ",err.response.data);
+                //err.response.data => DTO on the server side : ErrorResponse
+                alert(err.response.data.message);           
+      })
+      
     }
 
     saveStudent = (e) => {
@@ -370,7 +385,7 @@ class RegisterUserComponent extends Component{
                     <input type='password' placeholder='password' name="confirmPassword" className="form-control" value={this.state.confirmPassword} onChange={this.onChange}/>
                 </div>
 
-                <button></button>
+                <button className='btn' onClick={this.sendCredentials}>Register</button>
                 </fieldset>
             </form>
     </div>

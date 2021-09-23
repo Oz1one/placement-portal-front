@@ -22,7 +22,7 @@ class AuthUserComponent extends Component{
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({message : 'User added successfully.'});
-                this.props.history.push('/student');
+                this.props.history.push('/profile');
             }).catch( err=>{
               //  console.error(err);
                 console.error("in err ",err.response.data);

@@ -9,16 +9,14 @@ class ApiService {
         return axios.get(USER_API_BASE_URL);
     }
 
-    fetchUserById(userId) {
+    fetchStudentById(userId) {
         return axios.get(USER_API_BASE_URL + '/' + userId);
     }
 
-    deleteUser(userId) {
-        return axios.delete(USER_API_BASE_URL + '/' + userId);
-    }
+   
 
-    addStudent(student, course) {
-        return axios.post(""+USER_API_BASE_URL+'/registration'+'/'+ course.year+'/'+course.batch +'/'+course.course,student);
+    addStudent(course, student) {
+        return axios.post(""+USER_API_BASE_URL+'/registration/'+ course.year+'/'+course.batch +'/'+course.course,student);
 
     }
 

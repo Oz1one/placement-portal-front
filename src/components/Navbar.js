@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 
-function Navbar() {
+function Navbar(props) {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -27,12 +27,14 @@ function Navbar() {
     }
   };
 
+  
+
   return (
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
         Placement Portal
-          <i class='fab fa-firstdraft' />
+          <i className='fab fa-firstdraft' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -83,6 +85,7 @@ function Navbar() {
             >
               Sign in
             </Link>
+            
           </li>
         </ul>
         <Button />

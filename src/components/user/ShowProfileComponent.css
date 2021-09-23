@@ -1,0 +1,12 @@
+img{
+    max-width:150px;
+    height: auto;
+    margin:15px;
+
+}
+
+.border11{
+    border:2px solid black;
+    max-width:fit-content
+
+}

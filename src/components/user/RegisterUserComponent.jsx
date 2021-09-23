@@ -101,9 +101,9 @@ class RegisterUserComponent extends Component{
             passingYearGrad: "",
             passingYearPostGrad:"",
 
-            year: "2019",
-          batch: "jan",
-          course: "dac",
+            year: "",
+          batch: "",
+          course: "",
 
           userName:"",
           password:"",
@@ -142,7 +142,7 @@ class RegisterUserComponent extends Component{
             markPostGrad:this.state.markPostGrad, markCCEE:this.state.markCCEE,
             passingYear10th:this.state.passingYear10th, passingYear12th:this.state.passingYear12th,
             passingYearDiploma:this.state.passingYearDiploma, passingYearGrad:this.state.passingYearGrad, passingYearPostGrad:this.state.passingYearPostGrad};
-        ApiService.addStudent(student, course)
+        ApiService.addStudent(course, student)
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({studentId: resp.data});
@@ -184,7 +184,7 @@ class RegisterUserComponent extends Component{
               <span>Year</span>
               <select name='year' value={this.state.year} onChange={this.onChange}>
                 {year.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                  <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
             </div>
@@ -193,7 +193,7 @@ class RegisterUserComponent extends Component{
             <span>Batch</span>
               <select name='batch' value={this.state.batch} onChange={this.onChange}>
                 {batch.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                  <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
             </div>
@@ -202,7 +202,7 @@ class RegisterUserComponent extends Component{
             <span>Course</span>
               <select name='course' value={this.state.course} onChange={this.onChange}>
                 {course.map((option) => (
-                  <option value={option.value}>{option.label}</option>
+                  <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
             </div>
@@ -247,8 +247,8 @@ class RegisterUserComponent extends Component{
                 </div>
 
                 <div className="form-group">
-                    <label>Class 10th passing year:</label> Class 10th passing year:
-                    <input type='number' placeholder='year of class 10th' name="passingYear10th" className="form-control" value={this.state.passingYear10th} onChange={this.onChange}/>
+                    <label>Class 10th passing date:</label> Class 10th passing date:
+                    <input type='date' placeholder='year of class 10th' name="passingYear10th" className="form-control" value={this.state.passingYear10th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
@@ -257,8 +257,8 @@ class RegisterUserComponent extends Component{
                 </div>
 
                 <div className="form-group">
-                    <label>Class 12th passing year:</label> Class 12th passing year:
-                    <input type='number' placeholder='year of class 12th' name="passingYear12th" className="form-control" value={this.state.passingYear12th} onChange={this.onChange}/>
+                    <label>Class 12th passing date:</label> Class 12th passing date:
+                    <input type='date' placeholder='year of class 12th' name="passingYear12th" className="form-control" value={this.state.passingYear12th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
@@ -267,8 +267,8 @@ class RegisterUserComponent extends Component{
                 </div>
 
                 <div className="form-group">
-                    <label>Diploma passing year:</label> Diploma passing year:
-                    <input type='number' placeholder='year of passing diploma' name="passingYearDiploma" className="form-control" value={this.state.passingYearDiploma} onChange={this.onChange}/>
+                    <label>Diploma passing date:</label> Diploma passing date:
+                    <input type='date' placeholder='year of passing diploma' name="passingYearDiploma" className="form-control" value={this.state.passingYearDiploma} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
@@ -277,8 +277,8 @@ class RegisterUserComponent extends Component{
                 </div>
 
                 <div className="form-group">
-                    <label>Graduation Year:</label> Graduation Year:
-                    <input type='number' placeholder='year of graduation' name="passingYearGrad" className="form-control" value={this.state.passingYearGrad} onChange={this.onChange}/>
+                    <label>Graduation date:</label> Graduation date:
+                    <input type='date' placeholder='year of graduation' name="passingYearGrad" className="form-control" value={this.state.passingYearGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
@@ -287,8 +287,8 @@ class RegisterUserComponent extends Component{
                 </div>
 
                 <div className="form-group">
-                    <label>Post Graduation Year:</label> Post Graduation year:
-                    <input type='number' placeholder='year of post-graduation' name="passingYearPostGrad" className="form-control" value={this.state.passingYearPostGrad} onChange={this.onChange}/>
+                    <label>Post Graduation date:</label> Post Graduation date:
+                    <input type='date' placeholder='year of post-graduation' name="passingYearPostGrad" className="form-control" value={this.state.passingYearPostGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">

@@ -2,11 +2,14 @@ import React from "react";
 import img1 from '../../images/img-1.jpg'
 import './ShowProfileComponent.css'
 import img2 from '../../images/avatar-370-456322.png'
+import ApiService from '../../service/ApiService'
 
 
 
 const axios = require('axios').default;
-const data = sessionStorage.getItem('studentid');
+
+
+
 class ShowProfileComponent extends React.Component {
 
     constructor(props) {
@@ -30,6 +33,7 @@ class ShowProfileComponent extends React.Component {
         this.props.history.push('/add-questions');
     }
 
+    
 
     render() {
 
@@ -37,13 +41,15 @@ class ShowProfileComponent extends React.Component {
             <div className='card '>
                 <div>
                     <div className='text-center'>
+                    {/* <button className='btn  btn-space' onClick={() => this.downloadResume()}> Download Resume</button> */}
                         <button className='btn  btn-space' onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className='btn  btn-space' onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className='btn  btn-space' onClick={() => this.addQuestions()}>Add Questions</button>
+                        {/* <button className='btn  btn-space' onClick={() => this.logout()}> Logout</button> */}
                     </div>
                 </div>
                 <div >
-                    <img src= {"data:image/png;base64," + this.state.student.photo.photo} className="img-fluid img111" alt="profile image" /><br/>
+                    <img src= {this.state.student.photo?("data:image/png;base64," + this.state.student.photo):img2} className="img-fluid img111" alt="profile image" /><br/>
                     <button className='btn btn-space-2'>Change Photo</button>
                 </div>
 
@@ -92,6 +98,8 @@ class ShowProfileComponent extends React.Component {
                         </table>
                        
                     </div>
+
+                {/**place Details */}
                 </div>
                 <div className='text-center'>
                 <button className='btn do-center-4'>edit profile</button>

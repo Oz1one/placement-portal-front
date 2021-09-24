@@ -6,14 +6,16 @@ const USER_API_BASE_URL = 'http://localhost:8080/student';
 class ApiService {
 
     fetchStudent() {
-        return axios.get(USER_API_BASE_URL);
+        return axios.post(USER_API_BASE_URL+'/allStudent');
     }
 
-    fetchStudentById(userId) {
-        return axios.get(USER_API_BASE_URL + '/' + userId);
+    fetchStudentById(Id) {
+        return axios.get(USER_API_BASE_URL + '/profile/'+Id);
     }
 
-   
+   fetchPhotoById(id){
+       return axios.get(USER_API_BASE_URL+'/photo/'+id);
+   }
 
     addStudent(student) {
         return axios.post(""+USER_API_BASE_URL+'/registration',student);
@@ -33,6 +35,10 @@ class ApiService {
     }
     addCred(cred){
         return axios.post(""+USER_API_BASE_URL+'/credential/1', cred);
+    }
+
+    fetchResume(id){
+        return axios.post(""+USER_API_BASE_URL+'/resume/'+id);
     }
 
 }

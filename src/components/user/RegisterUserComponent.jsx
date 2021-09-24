@@ -66,12 +66,12 @@ const year = [
 
   const batch = [
     {
-      label: "jan",
-      value: "jan",
+      label: "JAN",
+      value: "JAN",
     },
     {
-      label: "july",
-      value: "july",
+      label: "JULY",
+      value: "JULY",
     },
   ];
 
@@ -101,9 +101,9 @@ class RegisterUserComponent extends Component{
             passingYearGrad: "",
             passingYearPostGrad:"",
 
-            year: "",
-          batch: "",
-          course: "",
+            year: "2019",
+          batch: "JAN",
+          courseName: "DAC",
 
           userName:"",
           password:"",
@@ -114,7 +114,7 @@ class RegisterUserComponent extends Component{
             message: null
         }
         this.saveStudent = this.saveStudent.bind(this);
-        this.sendCredentials= this.sendCredentials.bind(this);
+        
     }
 
     sendCredentials=(e)=>{
@@ -134,19 +134,22 @@ class RegisterUserComponent extends Component{
     saveStudent = (e) => {
         e.preventDefault();
         this.handleScroll();
-        let course={year:this.state.year, batch:this.state.batch, course:this.state.course}
-        let student = {firstName: this.state.firstName,lastName:this.state.lastName, prn:this.state.prn,
+        
+        let student = {course:{year:this.state.year, batch:this.state.batch, courseName:this.state.courseName}, 
+         credential:{userName:this.state.userName, password:this.state.password },
+        firstName: this.state.firstName,lastName:this.state.lastName, prn:this.state.prn,
             dob:this.state.dob,email:this.state.email, mobNo:this.state.mobNo, address:this.state.address,
             gitLink:this.state.gitLink,linkedIn:this.state.linkedIn,mark10th:this.state.mark10th,
             mark12th:this.state.mark12th,markDiploma:this.state.markDiploma,markGrad:this.state.markGrad,
             markPostGrad:this.state.markPostGrad, markCCEE:this.state.markCCEE,
             passingYear10th:this.state.passingYear10th, passingYear12th:this.state.passingYear12th,
             passingYearDiploma:this.state.passingYearDiploma, passingYearGrad:this.state.passingYearGrad, passingYearPostGrad:this.state.passingYearPostGrad};
-        ApiService.addStudent(course, student)
+        ApiService.addStudent( student)
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({studentId: resp.data});
                 this.setState({message : 'User added successfully.'});
+                this.props.history.push('/profile')
             }).catch( err=>{
               //  console.error(err);
                 console.error("in err ",err.response.data);
@@ -200,7 +203,7 @@ class RegisterUserComponent extends Component{
 
             <div className="select-container">
             <span>Course</span>
-              <select name='course' value={this.state.course} onChange={this.onChange}>
+              <select name='courseName' value={this.state.courseName} onChange={this.onChange}>
                 {course.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -327,44 +330,6 @@ class RegisterUserComponent extends Component{
                 </div>
                 </fieldset>        
 
-                
-
-                
-
-                
-
-                <button href='#sec' className="btn btn-success" onClick={this.saveStudent} >Register to Continue!</button>
-            </form>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-<br/>
-<br/>
-<br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
-            <form id="sec">
                 <fieldset>
                     <legend>
                         Credential Details!
@@ -385,9 +350,18 @@ class RegisterUserComponent extends Component{
                     <input type='password' placeholder='password' name="confirmPassword" className="form-control" value={this.state.confirmPassword} onChange={this.onChange}/>
                 </div>
 
-                <button className='btn' onClick={this.sendCredentials}>Register</button>
+                
                 </fieldset>
+
+                
+
+                
+
+                <button href='#sec' className="btn btn-success" onClick={this.saveStudent} >Register!</button>
             </form>
+
+
+            
     </div>
         );
     }

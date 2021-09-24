@@ -1,11 +1,12 @@
 import React from "react";
 import img1 from '../../images/img-1.jpg'
 import './ShowProfileComponent.css'
+import img2 from '../../images/avatar-370-456322.png'
 
 
 
 const axios = require('axios').default;
-const data = sessionStorage.getItem('studentobj');
+const data = sessionStorage.getItem('studentid');
 class ShowProfileComponent extends React.Component {
 
     constructor(props) {
@@ -42,7 +43,7 @@ class ShowProfileComponent extends React.Component {
                     </div>
                 </div>
                 <div >
-                    <img src={"data:image/png;base64," + this.state.student.photo.photo} className="img-fluid img111" alt="profile image" /><br/>
+                    <img src= {"data:image/png;base64," + this.state.student.photo.photo} className="img-fluid img111" alt="profile image" /><br/>
                     <button className='btn btn-space-2'>Change Photo</button>
                 </div>
 
@@ -63,17 +64,17 @@ class ShowProfileComponent extends React.Component {
                     <div>
 
                         <table>
-                            <tr><td>marks of 10th std :</td><td>{this.state.student.marks_10th}</td></tr>
-                            <tr><td>Passing year 10th :</td><td>{this.state.student.passingYear_10th}</td></tr>
-                            <tr><td>marks of 12th Std :</td><td>{this.state.student.marks_12th}</td></tr>
-                            <tr><td>Passing year 12th :</td><td>{this.state.student.passingYear_12th}</td></tr>
-                            <tr><td>marks of diploma :</td><td>{this.state.student.marks_diploma}</td></tr>
-                            <tr><td>Passing year of diploma :</td><td>{this.state.student.passingYear_diploma}</td></tr>
-                            <tr><td> marks of graduation :</td><td>{this.state.student.marks_graduation}</td></tr>
-                            <tr><td>Passing year graduation :</td><td>{this.state.student.passingYear_graduation}</td></tr>
-                            <tr><td>marks of post graduation :</td><td> {this.state.student.marks_postgrad}</td></tr>
-                            <tr><td> Passing year post graduation :</td><td>{this.state.student.passingYear_postgrad}</td></tr>
-                            <tr><td>marks of CCEE :</td><td>{this.state.student.marks_ccee}</td></tr>
+                            <tr><td>marks of 10th std :</td><td>{this.state.student.mark10th}</td></tr>
+                            <tr><td>Passing year 10th :</td><td>{this.state.student.passingYear10th}</td></tr>
+                            <tr><td>marks of 12th Std :</td><td>{this.state.student.mark12th}</td></tr>
+                            <tr><td>Passing year 12th :</td><td>{this.state.student.passingYear12th}</td></tr>
+                            <tr><td>marks of diploma :</td><td>{this.state.student.markDiploma}</td></tr>
+                            <tr><td>Passing year of diploma :</td><td>{this.state.student.passingYearDiploma}</td></tr>
+                            <tr><td> marks of graduation :</td><td>{this.state.student.markGrad}</td></tr>
+                            <tr><td>Passing year graduation :</td><td>{this.state.student.passingYearGrad}</td></tr>
+                            <tr><td>marks of post graduation :</td><td> {this.state.student.markPostGrad}</td></tr>
+                            <tr><td> Passing year post graduation :</td><td>{this.state.student.passingYearPostGrad}</td></tr>
+                            <tr><td>marks of CCEE :</td><td>{this.state.student.markCCEE}</td></tr>
                         </table>
 
                     </div>
@@ -84,10 +85,10 @@ class ShowProfileComponent extends React.Component {
                 <div className='border11 do-center-3'>
                     <div>
                         <table>
-                        <tr><td>mobile :</td><td> {this.state.student.mobile}</td></tr>
+                        <tr><td>mobile :</td><td> {this.state.student.mobNo}</td></tr>
                         <tr><td>email :</td><td>{this.state.student.email}</td></tr>
                         <tr><td>git profile link :</td><td>{this.state.student.gitLink}</td></tr>
-                        <tr><td>linkedIn profile link :</td><td>{this.state.student.linkedInLink}</td></tr>
+                        <tr><td>linkedIn profile link :</td><td>{this.state.student.linkedIn}</td></tr>
                         </table>
                        
                     </div>

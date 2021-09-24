@@ -5,7 +5,7 @@ const USER_API_BASE_URL = 'http://localhost:8080/student';
 
 class ApiService {
 
-    fetchUsers() {
+    fetchStudent() {
         return axios.get(USER_API_BASE_URL);
     }
 
@@ -15,8 +15,8 @@ class ApiService {
 
    
 
-    addStudent(course, student) {
-        return axios.post(""+USER_API_BASE_URL+'/registration/'+ course.year+'/'+course.batch +'/'+course.course,student);
+    addStudent(student) {
+        return axios.post(""+USER_API_BASE_URL+'/registration',student);
 
     }
 
@@ -24,7 +24,7 @@ class ApiService {
         return axios.post(""+USER_API_BASE_URL, link);
     }
 
-    addUser(user) {
+    loginUser(user) {
         return axios.post(""+USER_API_BASE_URL+'/login', user);
     }
     

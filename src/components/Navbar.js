@@ -12,7 +12,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
- 
+  const studentId= sessionStorage.getItem('studentid');
  
 
   const onMouseEnter = () => {
@@ -81,20 +81,7 @@ function Navbar() {
               Contact Us
             </Link>
           </li>
-          <li>
-            <Link
-              to='/sign-in'
-              className= 'nav-links-mobile'
-              onClick={closeMobileMenu}
-            >
-              Sign in
-            </Link>
-
-            
-            
-            
-            
-          </li>
+          
         </ul>
       <Button />
       </nav>

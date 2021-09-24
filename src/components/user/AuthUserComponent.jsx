@@ -18,11 +18,12 @@ class AuthUserComponent extends Component{
     authStudent = (e) => {
         e.preventDefault();
         let user = {userName: this.state.userName, password: this.state.password};
-        ApiService.addUser(user)
+        ApiService.loginUser(user)
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({message : 'User added successfully.'});
-                window.sessionStorage.setItem('studentobj', resp.data);
+                window.sessionStorage.setItem('studentid', resp.data.id);
+                
                 this.props.history.push({
                     pathname: '/profile',
                    

@@ -9,7 +9,7 @@ class ListUserComponent extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            users: [],
+            students: [],
             message: null
         }
        
@@ -20,10 +20,10 @@ class ListUserComponent extends React.Component{
     }
 
     reloadUserList() {
-        ApiService.fetchUsers()
+        ApiService.fetchStudent()
             .then((resp) => {
-                this.setState({users: resp.data})
-                console.log(this.state.users);
+                this.setState({students: resp.data})
+                console.log(this.state.students);
             });
             // UserService.getUsers().then(resp => {
             //     this.setState({ users: resp.data });
@@ -43,21 +43,19 @@ class ListUserComponent extends React.Component{
                             <th className="hidden">Id</th>
                             <th>FirstName</th>
                             <th>LastName</th>
-                            <th>UserName</th>
-                            <th>Age</th>
-                            <th>Salary</th>
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            this.state.users.map(
-                        user =>
-                                    <tr key={user.id}>
-                                        <td>{user.firstName}</td>
-                                        <td>{user.lastName}</td>
-                                        <td>{user.userName}</td>
-                                        <td>{user.age}</td>
-                                        <td>{user.salary}</td>
+                            this.state.students.map(
+                        student =>
+                                    <tr key={student.id}>
+                                        <td>{student.firstName}</td>
+                                        <td>{student.lastName}</td>
+                                        
+                                        
                                     </tr>
                             )
                         }

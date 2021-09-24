@@ -24,7 +24,12 @@ class ShowProfileComponent extends React.Component {
     }
 
     uploadResume() {
-        this.props.history.push('/upload-resume');
+        this.props.history.push({
+            pathname: '/upload-resume',
+           
+            state: { student: this.state.student }
+            
+          })
     }
 
     addPlacementDetails() {
@@ -42,6 +47,7 @@ class ShowProfileComponent extends React.Component {
 
     }
    
+    
 
 
     render() {

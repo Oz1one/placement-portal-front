@@ -38,8 +38,18 @@ class ApiService {
     }
 
     fetchResume(id){
-        return axios.post(""+USER_API_BASE_URL+'/resume/'+id);
+        return axios.post(""+USER_API_BASE_URL+'/download/resume/'+id);
     }
+
+    uploadResume(id, formData){
+        return axios({
+            method: "post",
+            url: ""+USER_API_BASE_URL+'/resume/'+id,
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+    }
+    
 
     
 

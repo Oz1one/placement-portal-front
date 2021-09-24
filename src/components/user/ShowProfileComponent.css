@@ -44,3 +44,7 @@
 .btn-space-2{
      margin-left: 13px;
 }
+
+.hidden{
+    display: none;
+}

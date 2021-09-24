@@ -41,6 +41,8 @@ class ApiService {
         return axios.post(""+USER_API_BASE_URL+'/resume/'+id);
     }
 
+    
+
 }
 
 export default new ApiService();

@@ -3,10 +3,12 @@ import img1 from '../../images/img-1.jpg'
 import './ShowProfileComponent.css'
 import img2 from '../../images/avatar-370-456322.png'
 import ApiService from '../../service/ApiService'
+import './ShowProfileComponent.css'
 
 
 
 const axios = require('axios').default;
+
 
 
 
@@ -33,24 +35,33 @@ class ShowProfileComponent extends React.Component {
         this.props.history.push('/add-questions');
     }
 
-    
+    logout(){
+        sessionStorage.removeItem('studentid');
+        this.state.student=null;
+        this.props.history.push('/');
+
+    }
+   
+
 
     render() {
 
+        let studentId= sessionStorage.getItem('studentid');
+        
         return (
             <div className='card '>
                 <div>
                     <div className='text-center'>
-                    {/* <button className='btn  btn-space' onClick={() => this.downloadResume()}> Download Resume</button> */}
-                        <button className='btn  btn-space' onClick={() => this.uploadResume()}> Upload Resume</button>
-                        <button className='btn  btn-space' onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
-                        <button className='btn  btn-space' onClick={() => this.addQuestions()}>Add Questions</button>
-                        {/* <button className='btn  btn-space' onClick={() => this.logout()}> Logout</button> */}
+                        <button className='btn  btn-space' onClick={() => this.downloadResume()}> Download Resume</button>
+                        <button className= {studentId?'btn  btn-space':'hidden'}  onClick={() => this.uploadResume()}> Upload Resume</button>
+                        <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
+                        <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
+                        <button className={studentId?'btn  btn-space':'hidden'} onClick={() => this.logout()}> Logout</button>
                     </div>
                 </div>
                 <div >
                     <img src= {this.state.student.photo?("data:image/png;base64," + this.state.student.photo):img2} className="img-fluid img111" alt="profile image" /><br/>
-                    <button className='btn btn-space-2'>Change Photo</button>
+                    <button className= {studentId?'btn  btn-space-2':'hidden'}>Change Photo</button>
                 </div>
 
 
@@ -102,7 +113,7 @@ class ShowProfileComponent extends React.Component {
                 {/**place Details */}
                 </div>
                 <div className='text-center'>
-                <button className='btn do-center-4'>edit profile</button>
+                <button className= {studentId?'btn do-center-4':'hidden'} >edit profile</button>
                 </div>
             </div>
 

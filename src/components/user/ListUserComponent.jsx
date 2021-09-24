@@ -18,6 +18,10 @@ const year = [
       label: "2022",
       value: "2022",
     },
+    {
+      label: "ALL",
+      value: "ALL",
+    }
   ];
  
   const course = [
@@ -61,6 +65,10 @@ const year = [
         label: "DRAT",
         value: "DRAT",
       },
+      {
+        label: "ALL",
+        value: "ALL",
+      }
   ];
 
 
@@ -74,22 +82,26 @@ const year = [
       label: "JULY",
       value: "JULY",
     },
+    {
+      label: "ALL",
+      value: "ALL",
+    }
   ];
 
-class ListUserComponent extends React.Component{
+  class ListUserComponent extends React.Component{
 
-
+  
     constructor(props) {
         super(props)
         this.state = {
             students: [],
             message: null,
 
-            year: "2019",
-            batch: "JAN",
-            courseName: "DAC"
+            year: "ALL",
+            batch: "ALL",
+            courseName: "ALL",
+            filterStr:""
         }
-        this.filterDetails = this.filterDetails.bind(this);
     }
 
     componentDidMount() {
@@ -97,12 +109,7 @@ class ListUserComponent extends React.Component{
     }
 
 
-
-    filterDetails(e){
-        
-    }
-
-
+   
 
 
 
@@ -112,11 +119,7 @@ class ListUserComponent extends React.Component{
                 this.setState({students: resp.data})
                 console.log(this.state.students);
             });
-            // UserService.getUsers().then(resp => {
-            //     this.setState({ users: resp.data });
-            //     console.log(this.state.users);
-            // })
-
+           
     }
 showProfile(id){
  
@@ -146,16 +149,43 @@ showProfile(id){
 
 }
 
+
     render() {
-        return (
-            <div>
+
+
+
+      let filteredStudents = this.state.students
+      .filter(s=>this.state.batch==s.course.batch || this.state.batch=='ALL')
+      .filter(s=>this.state.courseName==s.course.courseName || this.state.courseName=='ALL')
+      .filter(s=>this.state.year==s.course.year || this.state.year=='ALL')
+      .filter(s=>(s.firstName.includes(this.state.filterStr)||s.lastName.includes(this.state.filterStr)))
+      .map(
+        student =>
+                    <tr key={student.id}>
+                        <td>{student.firstName}</td>
+                        <td>{student.lastName}</td>
+                        <td>
+                            {student.markCCEE}
+                        </td>
+                        <td><button className='btn' name={student.id} id={student.id} onClick={e => this.showProfile(e.target.id)}>View Profile</button></td>
+                        
+                    </tr>
+            );
+
+
+
+            
+            /** reconfigure the style of input text box which filters the names */
+            return (
+              <div>
                 <div className='text-center'>
-                
+                <input type={Text} onChange={e=>this.setState({filterStr:e.target.value})} />
                 <fieldset className='batch-details'>
-          <legend>Batch Details!</legend>
+          <legend>Select Course </legend>
             <div className="select-container">
               <span>Year</span>
-              <select name='year' value={this.state.year} onChange={this.onChange}>
+              <select name='year' value={this.state.year}
+                onChange={e=>this.setState({year:e.target.value})}>
                 {year.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -164,7 +194,8 @@ showProfile(id){
 
             <div className="select-container">
             <span>Batch</span>
-              <select name='batch' value={this.state.batch} onChange={this.onChange}>
+              <select name='batch' value={this.state.batch}
+              onChange={e=>this.setState({batch:e.target.value})}>
                 {batch.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -173,7 +204,8 @@ showProfile(id){
 
             <div className="select-container">
             <span>Course</span>
-              <select name='courseName' value={this.state.courseName} onChange={this.onChange}>
+              <select name='courseName' value={this.state.courseName} 
+              onChange={e=>this.setState({courseName:e.target.value})}>
                 {course.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -201,18 +233,7 @@ showProfile(id){
                     </thead>
                     <tbody>
                         {
-                            this.state.students.map(
-                        student =>
-                                    <tr key={student.id}>
-                                        <td>{student.firstName}</td>
-                                        <td>{student.lastName}</td>
-                                        <td>
-                                            {student.markCCEE}
-                                        </td>
-                                        <td><button className='btn' name={student.id} id={student.id} onClick={e => this.showProfile(e.target.id)}>View Profile</button></td>
-                                        
-                                    </tr>
-                            )
+                          filteredStudents  
                         }
                     </tbody>
                 </table>

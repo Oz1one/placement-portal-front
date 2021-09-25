@@ -33,11 +33,23 @@ class ShowProfileComponent extends React.Component {
     }
 
     addPlacementDetails() {
-        this.props.history.push('/add-placement-details');
+        this.props.history.push({
+            pathname: '/add-placement-details',
+           
+            state: { student: this.state.student }
+            
+          })
+        
     }
 
     addQuestions() {
-        this.props.history.push('/add-questions');
+        this.props.history.push({
+            pathname: '/add-questions',
+           
+            state: { student: this.state.student }
+            
+          })
+    
     }
 
     logout(){
@@ -47,7 +59,14 @@ class ShowProfileComponent extends React.Component {
         window.location.reload();
     }
    
-    
+    addProject(){
+        this.props.history.push({
+            pathname: '/add-project',
+           
+            state: { student: this.state.student }
+            
+          })
+    }
 
 
     render() {
@@ -62,6 +81,7 @@ class ShowProfileComponent extends React.Component {
                         <button className= {studentId?'btn  btn-space':'hidden'}  onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
+                        <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addProject()}>Add Project details</button>
                         <button className={studentId?'btn  btn-space':'hidden'} onClick={() => this.logout()}> Logout</button>
                     </div>
                 </div>

@@ -15,6 +15,7 @@ import ShowProfileComponent from './components/user/ShowProfileComponent'
 import UploadResumeComponent from './components/user/UploadResumeComponent';
 import AddPlacementDetails from './components/user/AddPlacementComponent';
 import AddQuestionsComponent from './components/user/AddQuestionsComponent';
+import AddProjectDetailComponent from './components/user/AddProjectDetailComponent';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path='/upload-resume' component={UploadResumeComponent}/>
         <Route path='/add-placement-details' component={AddPlacementDetails}/>
         <Route path='/add-questions' component={AddQuestionsComponent}/>
+        <Route path='add-project' component={AddProjectDetailComponent}/>
       </Switch>
     </Router>
     

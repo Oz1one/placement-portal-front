@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import {Logout} from './Logout'
+
 
 
 
@@ -12,7 +12,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-  const studentId= sessionStorage.getItem('studentid');
+ 
  
 
   const onMouseEnter = () => {

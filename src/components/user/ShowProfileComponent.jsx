@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from '../../images/img-1.jpg'
+
 import './ShowProfileComponent.css'
 import img2 from '../../images/avatar-370-456322.png'
 import ApiService from '../../service/ApiService'
@@ -7,7 +7,6 @@ import './ShowProfileComponent.css'
 
 
 
-const axios = require('axios').default;
 
 
 
@@ -16,7 +15,7 @@ class ShowProfileComponent extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
+        
         this.state = {
             student: props.location.state.student,
             message: null
@@ -52,6 +51,10 @@ class ShowProfileComponent extends React.Component {
     
     }
 
+    // downloadResume(){
+    //     ApiService.
+    // }
+
     logout(){
         sessionStorage.removeItem('studentid');
         this.state.student=null;
@@ -86,7 +89,15 @@ class ShowProfileComponent extends React.Component {
                     </div>
                 </div>
                 <div >
-                    <img src= {this.state.student.photo?("data:image/png;base64," + this.state.student.photo):img2} className="img-fluid img111" alt="profile image" /><br/>
+                <img
+            src={
+              this.state.student.photo
+                ? "data:image/png;base64," + this.state.student.photo.photo
+                : img2
+            }
+            className="img-fluid img111"
+            alt="profile"
+          />
                     <button className= {studentId?'btn  btn-space-2':'hidden'}>Change Photo</button>
                 </div>
 
@@ -94,6 +105,7 @@ class ShowProfileComponent extends React.Component {
                 {/**basic Details */}
                 <div className='border11 do-center'>
                     <table>
+                        <tr><thead></thead><thead></thead></tr>
                         <tr><td>first Name :</td><td>{this.state.student.firstName}</td></tr>
                         <tr><td>last Name :</td><td>{this.state.student.lastName}</td></tr>
                         <tr><td>prn :</td><td>{this.state.student.prn}</td></tr>
@@ -107,6 +119,7 @@ class ShowProfileComponent extends React.Component {
                     <div>
 
                         <table>
+                        <tr><thead></thead><thead></thead></tr>
                             <tr><td>marks of 10th std :</td><td>{this.state.student.mark10th}</td></tr>
                             <tr><td>Passing year 10th :</td><td>{this.state.student.passingYear10th}</td></tr>
                             <tr><td>marks of 12th Std :</td><td>{this.state.student.mark12th}</td></tr>
@@ -128,6 +141,7 @@ class ShowProfileComponent extends React.Component {
                 <div className='border11 do-center-3'>
                     <div>
                         <table>
+                        <tr><thead></thead><thead></thead></tr>
                         <tr><td>mobile :</td><td> {this.state.student.mobNo}</td></tr>
                         <tr><td>email :</td><td>{this.state.student.email}</td></tr>
                         <tr><td>git profile link :</td><td>{this.state.student.gitLink}</td></tr>

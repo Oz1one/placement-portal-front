@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
-//import AddUserComponent from './AddUserComponent.css';
+import './AddUserComponent.css'
+
 
 class AddProjectDetailComponent extends Component{
 
     constructor(props){
         super(props);
         this.state ={
+
+            student: props.location.state.student,
+
             projectName: '',
             projectDescription: '',
             projectGitLink: '',
@@ -38,7 +42,7 @@ class AddProjectDetailComponent extends Component{
 
     render() {
         return(
-            <div className='projectDetailsScreen'>
+            <div className='signupScreen'>
                 <form>
                 <h1>Project Details</h1>
                 <div className="form-group">

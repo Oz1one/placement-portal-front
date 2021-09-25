@@ -1,7 +1,8 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
+import './AddUserComponent.css'
 
-const companies = [
+const companyName = [
     {
       label: "TCS",
       value: "TCS",
@@ -47,6 +48,7 @@ class AddPlacementComponent extends Component{
     constructor(props){
         super(props);
         this.state ={
+          student: props.location.state.student,
           cid:"",
           round:"",
           isSelected:"",
@@ -82,18 +84,21 @@ class AddPlacementComponent extends Component{
 
     render() {
         return(
-            <div>
-                <h2 className="text-center">Add Placement Details!</h2>
+            <div className='signupScreen'>
+              <h1 style={{
+            'color': 'white'
+          }}>Add Placement Details!</h1>
+                
 
-                <div >
+                
             <form >
               <div className='body-batch-details'>
               <fieldset className='batch-details'>
 
-            <div className="select-container">
+            <div className="form-group">
               <span>Company</span>
-              <select name='companies' value={this.state.companyName} onChange={this.onChange}>
-                {companies.map((option) => (
+              <select name='companyName' className='form-control' value={this.state.companyName} onChange={this.onChange}>
+                {companyName.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
@@ -101,16 +106,16 @@ class AddPlacementComponent extends Component{
 
             <div className="select-container">
               <span>Round</span>
-              <select name='round' value={this.state.round} onChange={this.onChange}>
+              <select name='round' className='form-control' value={this.state.round} onChange={this.onChange}>
                 {round.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
             </div>
 
-            <div className="select-container">
+            <div className="form-group">
               <span>Were you selected?</span>
-              <select name='isSelected' value={this.state.isSelected} onChange={this.onChange}>
+              <select name='isSelected' className='form-control' value={this.state.isSelected} onChange={this.onChange}>
                 {isSelected.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
@@ -120,7 +125,7 @@ class AddPlacementComponent extends Component{
             </div> 
             <button className="btn btn-success" onClick={this.savePlacememtDetails} >Add details!</button>           
             </form>
-          </div>
+          
 
                 
 

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import './ContactUs.css'
-import img1 from '../../images/img-1.jpg'
 
 export default function ContactUs() {
   return <div className='center'>

@@ -36,7 +36,7 @@ function App() {
         <Route path='/upload-resume' component={UploadResumeComponent}/>
         <Route path='/add-placement-details' component={AddPlacementDetails}/>
         <Route path='/add-questions' component={AddQuestionsComponent}/>
-        <Route path='add-project' component={AddProjectDetailComponent}/>
+        <Route path='/add-project' component={AddProjectDetailComponent}/>
       </Switch>
     </Router>
     

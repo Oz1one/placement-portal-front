@@ -16,74 +16,44 @@ class AuthUserComponent extends Component{
     }
 
     authStudent = (e) => {
+        // prevent the default action
         e.preventDefault();
-        let user = {userName: this.state.userName, password: this.state.password};
-        let student = {};
-        ApiService.loginUser(user)
-            .then(resp=>{
-                this.setState({message : 'User logged in successfully.'});
-                console.log("fetched student details after login"+resp);
-                console.log("fetch the photo now");
-                window.sessionStorage.setItem('studentid', resp.data.id);
-                student=resp.data;
-                ApiService.fetchPhotoById(resp.data.id).then(resp1=>{
-                    student.photo = resp1.data.photo;
-                    console.log("photo received");
+        // send the login request
+        let cred= { userName : this.state.userName, password : this.state.password  };
+        ApiService.loginUser(cred).then((resp)=>{
+            // got the user
+            console.log("logged in user id is "+resp.data.id);
+            // set session storage
+            sessionStorage.setItem("studentid",resp.data.id);
 
-                });
+            //fetch photo
 
+            ApiService.fetchPhoto(resp.data.id).then((resp1)=>{
+
+                console.log("found photo id : "+resp1.data.id);
+                resp.data.photo=resp1.data;
+                
+            }).catch((err)=>{
+
+                console.log("err in finding photo is : "+err);
+                resp.data.photo=null;
+
+            }).finally(()=>{
+                console.log("finnaly push if photo found or not but logged in ");
 
                 this.props.history.push({
-                    pathname: '/profile',
-                    
-                    state: { student: student }
-                    
-                })
+                    pathname:"/profile",
+                    state : {student : resp.data}
+                });
                 window.location.reload();
-                  console.log(this.props.history);
-            }).catch( err=>{
-              console.log("from catch error dummy add history :"+this.props.history);
-                console.error("in err ",err.response);
-                //err.response.data => DTO on the server side : ErrorResponse
-                
-                /**
-                 * dummy data
-                
-                 this.setState({message : 'User added successfully.'});
-                 window.sessionStorage.setItem('studentid', 1);
-                 
-                 this.props.history.push({
-                     pathname: '/profile',
-                     
-                     state: { student: {
-                        "firstName": "Rakesh",
-                        "lastName": "Roshan",
-                        "prn": 1234567890,
-                        "dob": "1998-01-01",
-                        "email": "rakesh@gmail.com",
-                        "mobNo": 1234567890,
-                        "address": "Pune",
-                        "gitLink": "www.github.com/rakesh_roshan",
-                        "linkedIn": "linkedin.com/rakesh_roshan",
-                        "mark10th": 100,
-                        "mark12th": 100,
-                        "markDiploma": 100,
-                        "markGrad": 100,
-                        "markPostGrad" : 100,
-                        "markCCEE" : 100,
-                        "passingYear10th" : "2014-01-01",
-                        "passingYear12th" : "2016-01-01",
-                        "passingYearDiploma" : "2017-01-01",
-                        "passingYearGrad" : "2018-01-01",
-                        "passingYearPostGrad" : "2019-01-01"
-                    } }
-                     
-                    })
-                    window.location.reload();
-                    */
-                this.props.history.push('/sign-in');
-            })
-            
+
+            });
+
+        }).catch((err)=>{
+            console.log("cannot log in err: "+err);
+            this.props.history.push("/sign-in");
+        });
+
     }
 
     onChange = (e) =>

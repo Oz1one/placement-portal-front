@@ -12,7 +12,7 @@ const companies = [
     }
   ];
 
-  const rounds = [
+  const round = [
     {
       label: "CODING",
       value: "CODING",
@@ -28,6 +28,17 @@ const companies = [
     {
       label: "HR",
       value: "HR",
+    }
+  ];
+
+  const isSelected = [
+    {
+      label: "YES",
+      value: "YES",
+    },
+    {
+      label: "NO",
+      value: "NO",
     }
   ];
 

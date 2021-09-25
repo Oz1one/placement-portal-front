@@ -17,6 +17,10 @@ class ApiService {
        return axios.get(USER_API_BASE_URL+'/photo/'+id);
    }
 
+   fetchPhoto(id) {
+    return axios.post("" + USER_API_BASE_URL + `/download/photo/${id}`);
+}
+
     addStudent(student) {
         return axios.post(""+USER_API_BASE_URL+'/registration',student);
 

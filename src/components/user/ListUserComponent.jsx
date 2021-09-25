@@ -128,11 +128,12 @@ showProfile(id){
     ApiService.fetchStudentById(id).then(resp=>{
         console.log(resp);
         console.log(resp.data);
-        ApiService.fetchPhotoById(id).then(resp1=>{
+        ApiService.fetchPhoto(id).then(resp1=>{
             console.log(resp1);
             console.log(resp1.data);
             resp.data.photo=resp1.data;
         }).catch(err=>{
+          console.log('photo not found');
             resp.data.photo= null;
         })
         this.props.history.push({

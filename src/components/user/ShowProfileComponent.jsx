@@ -44,7 +44,7 @@ class ShowProfileComponent extends React.Component {
         sessionStorage.removeItem('studentid');
         this.state.student=null;
         this.props.history.push('/');
-
+        window.location.reload();
     }
    
     

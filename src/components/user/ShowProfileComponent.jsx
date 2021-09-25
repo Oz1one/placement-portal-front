@@ -70,17 +70,36 @@ class ShowProfileComponent extends React.Component {
             
           })
     }
+    changePhoto(){
+        this.props.history.push({
+            pathname: '/change-photo',
+           
+            state: { student: this.state.student }
+            
+          })
+    }
+
+
+    editProfile(){
+        this.props.history.push({
+            pathname: '/edit-profile',
+           
+            state: { student: this.state.student }
+            
+          })
+    }
 
 
     render() {
-
+        let resumelink = 'http://localhost:8080/student/download/resume/'+this.state.student.id;
         let studentId= sessionStorage.getItem('studentid');
         
         return (
-            <div className='card '>
+            <div className='card11 '>
                 <div>
                     <div className='text-center'>
-                        <button className='btn  btn-space' onClick={() => this.downloadResume()}> Download Resume</button>
+                    <a href={resumelink}  target='_blank' rel='noopener noreferrer' >
+                        <button className='btn  btn-space'> Download Resume</button></a>
                         <button className= {studentId?'btn  btn-space':'hidden'}  onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
@@ -88,7 +107,7 @@ class ShowProfileComponent extends React.Component {
                         <button className={studentId?'btn  btn-space':'hidden'} onClick={() => this.logout()}> Logout</button>
                     </div>
                 </div>
-                <div >
+                <div className=''>
                 <img
             src={
               this.state.student.photo
@@ -97,8 +116,8 @@ class ShowProfileComponent extends React.Component {
             }
             className="img-fluid img111"
             alt="profile"
-          />
-                    <button className= {studentId?'btn  btn-space-2':'hidden'}>Change Photo</button>
+          /><br/>
+                    <button className= {studentId?'btn  btn-space-2':'hidden'} onClick={() => this.changePhoto()}>Change Photo</button>
                 </div>
 
 
@@ -153,7 +172,7 @@ class ShowProfileComponent extends React.Component {
                 {/**place Details */}
                 </div>
                 <div className='text-center'>
-                <button className= {studentId?'btn do-center-4':'hidden'} >edit profile</button>
+                <button className= {studentId?'btn do-center-4':'hidden'} onClick={() => this.editProfile()}>edit profile</button>
                 </div>
             </div>
 

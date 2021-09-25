@@ -159,7 +159,11 @@ showProfile(id){
       .filter(s=>this.state.batch==s.course.batch || this.state.batch=='ALL')
       .filter(s=>this.state.courseName==s.course.courseName || this.state.courseName=='ALL')
       .filter(s=>this.state.year==s.course.year || this.state.year=='ALL')
-      .filter(s=>(s.firstName.includes(this.state.filterStr)||s.lastName.includes(this.state.filterStr)))
+      .filter(
+        (s) =>
+          s.firstName.toUpperCase().includes(this.state.filterStr.toUpperCase()) ||
+          s.lastName.toUpperCase().includes(this.state.filterStr.toUpperCase())
+      )
       .map(
         student =>
                     <tr key={student.id}>
@@ -167,6 +171,9 @@ showProfile(id){
                         <td>{student.lastName}</td>
                         <td>
                             {student.markCCEE}
+                        </td>
+                        <td>
+                            {student.course.courseName+' '+student.course.batch+' '+(student.course.year+'').substring(2)}
                         </td>
                         <td><button className='btn' name={student.id} id={student.id} onClick={e => this.showProfile(e.target.id)}>View Profile</button></td>
                         
@@ -227,6 +234,7 @@ showProfile(id){
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>CCEE Marks</th>
+                            <th>Course </th>
                             <th></th>
                             
                             

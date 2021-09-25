@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
+import './RegisterUserComponent.css'
 const year = [
     {
       label: "2019",
@@ -182,9 +183,9 @@ class RegisterUserComponent extends Component{
             <form >
               <div className='body-batch-details'>
               <fieldset className='batch-details'>
-          <legend>Batch Details!</legend>
+          <legend className='increase-font-2'>Batch Details!</legend>
             <div className="select-container">
-              <span>Year</span>
+              <span className='increase-font'>Year</span>
               <select name='year' value={this.state.year} onChange={this.onChange}>
                 {year.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -193,7 +194,7 @@ class RegisterUserComponent extends Component{
             </div>
 
             <div className="select-container">
-            <span>Batch</span>
+            <span className='increase-font'>Batch</span>
               <select name='batch' value={this.state.batch} onChange={this.onChange}>
                 {batch.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -202,7 +203,7 @@ class RegisterUserComponent extends Component{
             </div>
 
             <div className="select-container">
-            <span>Course</span>
+            <span className='increase-font'>Course</span>
               <select name='courseName' value={this.state.courseName} onChange={this.onChange}>
                 {course.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -217,24 +218,26 @@ class RegisterUserComponent extends Component{
 
                 <form>
                 <fieldset>
-                    <legend>Basic Details!</legend>
+                    <legend className='increase-font-2'>Basic Details!</legend>
                     <div className="form-group">
-                    <label>First Name:</label> First Name:
+                    <span className='increase-font'>First Name:</span>
                     <input placeholder="First Name" name="firstName" className="form-control" value={this.state.firstName} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Last Name:</label> Last Name:
+                <span className='increase-font'>Last Name:</span>
                     <input placeholder="Last name" name="lastName" className="form-control" value={this.state.lastName} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Date of Birth:</label> Date of Birth:
+                     
+                <span className='increase-font'>Date of Birth:</span>
                     <input type='date' name="dob" className="form-control" value={this.state.dob} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>PRN:</label> PRN:
+                     
+                <span className='increase-font'>PRN:</span>
                     <input type='number' placeholder='prn' name="prn" className="form-control" value={this.state.prn} onChange={this.onChange}/>
                 </div>
 
@@ -242,111 +245,111 @@ class RegisterUserComponent extends Component{
                 </fieldset> 
 
                 <fieldset>
-                    <legend>Academic Details!</legend>
+                    <legend className='increase-font-2'>Academic Details!</legend>
 
                     <div className="form-group">
-                    <label>Class 10th marks:</label> Class 10th marks:
+                    <span className='increase-font'>Class 10th marks:</span>
                     <input type='number' placeholder='10th marks' name="mark10th" className="form-control" value={this.state.mark10th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Class 10th passing date:</label> Class 10th passing date:
+                <span className='increase-font'>Class 10th passing date:</span>
                     <input type='date' placeholder='year of class 10th' name="passingYear10th" className="form-control" value={this.state.passingYear10th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Class 12th marks:</label> Class 12th marks:
+                <span className='increase-font'>Class 12th marks:</span>
                     <input type='number' placeholder='12th marks' name="mark12th" className="form-control" value={this.state.mark12th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Class 12th passing date:</label> Class 12th passing date:
+                <span className='increase-font'>Class 12th passing date:</span>
                     <input type='date' placeholder='year of class 12th' name="passingYear12th" className="form-control" value={this.state.passingYear12th} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Diploma marks(if any):</label> Diploma marks(if any):
+                <span className='increase-font'>Diploma marks(if any):</span>
                     <input type='number' placeholder='diploma marks' name="markDiploma" className="form-control" value={this.state.markDiploma} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Diploma passing date:</label> Diploma passing date:
+                <span className='increase-font'>Diploma passing date:</span>
                     <input type='date' placeholder='year of passing diploma' name="passingYearDiploma" className="form-control" value={this.state.passingYearDiploma} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Graduation marks:</label> Graduation marks:
+                <span className='increase-font'>Graduation marks:</span>
                     <input type='number' placeholder='graduation marks' name="markGrad" className="form-control" value={this.state.markGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Graduation date:</label> Graduation date:
+                <span className='increase-font'>Graduation date:</span>
                     <input type='date' placeholder='year of graduation' name="passingYearGrad" className="form-control" value={this.state.passingYearGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Post Graduation marks:</label> Post Graduation Marks:
+                <span className='increase-font'>Post Graduation Marks:</span>
                     <input type='number' placeholder='post graduation marks' name="markPostGrad" className="form-control" value={this.state.markPostGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Post Graduation date:</label> Post Graduation date:
+                <span className='increase-font'>Post Graduation date:</span>
                     <input type='date' placeholder='year of post-graduation' name="passingYearPostGrad" className="form-control" value={this.state.passingYearPostGrad} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>CCEE marks:</label> CCEE marks:
+                <span className='increase-font'>CCEE marks:</span>
                     <input type='number' placeholder='CCEE marks' name="markCCEE" className="form-control" value={this.state.markCCEE} onChange={this.onChange}/>
                 </div>
 
                 </fieldset>    
 
                 <fieldset>
-                    <legend>Contact Details!</legend>
+                    <legend className='increase-font-2'>Contact Details!</legend>
 
                     <div className="form-group">
-                    <label>Email:</label> Email:
+                    <span className='increase-font'>Email:</span>
                     <input type='email' placeholder='email address' name="email" className="form-control" value={this.state.email} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Mobile Number:</label> Mobile Number:
+                <span className='increase-font'>Mobile Number:</span>
                     <input type='number' placeholder='mobile number' name="mobNo" className="form-control" value={this.state.mobNo} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Address:</label> Address:
+                <span className='increase-font'>Address:</span>
                     <input type='text' placeholder='Address' name="address" className="form-control" value={this.state.address} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Git profile link:</label> Git profile link:
+                <span className='increase-font'>Git profile link:</span>
                     <input type='text' placeholder='git-link' name="gitLink" className="form-control" value={this.state.gitLink} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>LinkedIn profile Link:</label> LinkedIn profile Link:
+                <span className='increase-font'>LinkedIn profile Link:</span>
                     <input type='text' placeholder='LinkedIn link' name="linkedIn" className="form-control" value={this.state.linkedIn} onChange={this.onChange}/>
                 </div>
                 </fieldset>        
 
                 <fieldset>
-                    <legend>
+                    <legend className='increase-font-2'>
                         Credential Details!
                     </legend>
 
                     <div className="form-group">
-                    <label>User Name:</label>User Name:
+                    <span className='increase-font'>User Name:</span>
                     <input type='text' placeholder='User name' name="userName" className="form-control" value={this.state.userName} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Password:</label> Password:
+                <span className='increase-font'>Password:</span>
                     <input type='password' name="password" className="form-control" value={this.state.password} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
-                    <label>Confirm password:</label> Confirm Password:
+                <span className='increase-font'>Confirm Password:</span>
                     <input type='password' placeholder='password' name="confirmPassword" className="form-control" value={this.state.confirmPassword} onChange={this.onChange}/>
                 </div>
 

@@ -16,6 +16,8 @@ import UploadResumeComponent from './components/user/UploadResumeComponent';
 import AddPlacementDetails from './components/user/AddPlacementComponent';
 import AddQuestionsComponent from './components/user/AddQuestionsComponent';
 import AddProjectDetailComponent from './components/user/AddProjectDetailComponent';
+import ChangePhotoComponent from './components/user/ChangePhotoComponent';
+import EditProfileComponent from './components/user/EditProfileComponent';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path='/add-placement-details' component={AddPlacementDetails}/>
         <Route path='/add-questions' component={AddQuestionsComponent}/>
         <Route path='/add-project' component={AddProjectDetailComponent}/>
+        <Route path='/change-photo' component={ChangePhotoComponent}/>
+        <Route path='/edit-profile' component={EditProfileComponent}/>
       </Switch>
     </Router>
     

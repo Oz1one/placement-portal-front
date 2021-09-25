@@ -50,6 +50,10 @@ class ApiService {
         });
     }
 
+    addPlcementdetail(id, placementDetails){
+            return axios.post(""+USER_API_BASE_URL+'/placement'+id, placementDetails);
+    }
+
 
 }
 

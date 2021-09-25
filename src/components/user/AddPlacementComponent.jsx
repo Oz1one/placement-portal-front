@@ -49,7 +49,7 @@ class AddPlacementComponent extends Component{
         super(props);
         this.state ={
           student: props.location.state.student,
-          cid:"",
+         
           round:"",
           isSelected:"",
           companyName:'',
@@ -61,7 +61,7 @@ class AddPlacementComponent extends Component{
 
     savePlacememtDetails=(e)=>{
       e.preventDefault();
-      let placementDetails={cid:this.state.cid, round:this.state.round, isSelected:this.state.isSelected, companyName:this.state.companyName }
+      let placementDetails={ round:this.state.round, isSelected:this.state.isSelected, companyName:this.state.companyName }
       ApiService.addPlcementdetail(placementDetails).then(resp=>{
         console.log(resp.data);
         this.setState({message : 'Placement Detail added successfully.'});

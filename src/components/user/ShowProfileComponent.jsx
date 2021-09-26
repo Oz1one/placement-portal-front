@@ -17,9 +17,21 @@ class ShowProfileComponent extends React.Component {
         super(props)
         
         this.state = {
+
             student: props.location.state.student,
             message: null
         }
+        ApiService.fetchPhoto(this.state.student.id).then((resp)=>{
+            // set the photo as the property of student
+            console.log("found photo id ",resp.data.id);
+            this.state.student.photo = resp.data;
+          
+          }).catch(err =>{
+            
+            console.log("err in finding photo",err);
+            this.state.student.photo =null;
+      
+          });
     }
 
     uploadResume() {

@@ -121,32 +121,50 @@ const year = [
             });
            
     }
-showProfile(id){
+// showProfile(id){
  
 
- console.log(id);
-    ApiService.fetchStudentById(id).then(resp=>{
-        console.log(resp);
-        console.log(resp.data);
-        ApiService.fetchPhoto(id).then(resp1=>{
-            console.log(resp1);
-            console.log(resp1.data);
-            resp.data.photo=resp1.data;
-        }).catch(err=>{
-          console.log('photo not found');
-            resp.data.photo= null;
-        })
-        this.props.history.push({
-            pathname: '/profile',
+//  console.log(id);
+//     ApiService.fetchStudentById(id).then(resp=>{
+//         console.log(resp);
+//         console.log(resp.data);
+//         ApiService.fetchPhoto(id).then(resp1=>{
+//             console.log(resp1);
+//             console.log(resp1.data);
+//             resp.data.photo=resp1.data;
+//         }).catch(err=>{
+//           console.log('photo not found');
+//             resp.data.photo= null;
+//         })
+//         this.props.history.push({
+//             pathname: '/profile',
            
-            state: { student: resp.data }
+//             state: { student: resp.data }
             
-          })
-    }).catch(err=>{
-        alert('profile not available');
-        console.log(err);
-        this.props.history.push('/student')
-    })
+//           })
+//     }).catch(err=>{
+//         alert('profile not available');
+//         console.log(err);
+//         this.props.history.push('/student')
+//     })
+
+// }
+
+showProfile(id) {
+  // fetch the student using id 
+  ApiService.fetchStudentById(id).then((resp)=>{
+    
+    console.log("found student with id ",resp.data.id);
+    // fetch the image of the student 
+    this.props.history.push({
+      pathname:"/profile",
+      state : {student : resp.data}
+    });
+   
+
+  }).catch((err)=>{
+    console.log("std not found err ", err);
+  });
 
 }
 

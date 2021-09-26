@@ -50,6 +50,17 @@ class ApiService {
         });
     }
 
+
+    uploadPhoto(id, formData) {
+        return axios({
+            method: "post",
+            url: "" + USER_API_BASE_URL + '/photo/' + id,
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+    }
+
+
     addPlcementdetail(id, placementDetails){
             return axios.post(""+USER_API_BASE_URL+'/placement'+id, placementDetails);
     }

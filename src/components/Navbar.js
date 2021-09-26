@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from './Button';
+import { SigninButton } from './SigninButton';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { ProfileButton } from './ProfileButton';
 
 
 
@@ -12,7 +13,7 @@ function Navbar() {
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
- 
+  const studentId= sessionStorage.getItem('studentid');
  
 
   const onMouseEnter = () => {
@@ -83,7 +84,7 @@ function Navbar() {
           </li>
           
         </ul>
-      <Button />
+      {!studentId?<SigninButton />:<ProfileButton/>}
       </nav>
     </>
   );

@@ -53,7 +53,7 @@ class ChangePhotoComponent extends Component {
 
             <div className='signupScreen'>
             <form>
-                <h1>Upload Resume!!</h1>
+                <h1>Upload Photo!!</h1>
                 <div className='form-group'>
                     
                     <input type='file' className='form-control custom-width' onChange={this.onChange} />

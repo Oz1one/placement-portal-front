@@ -66,7 +66,7 @@ function Navbar() {
               Contact Us
             </Link>
           </li>
-          <li className='nav-item nav-links'>
+          <li className='nav-item nav-links' onClick={closeMobileMenu}>
           {!studentId?<SigninButton />:<ProfileButton/>}
           </li>
         </ul>

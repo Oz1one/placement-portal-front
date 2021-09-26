@@ -116,7 +116,8 @@ class ShowProfileComponent extends React.Component {
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
                         <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.addProject()}>Add Project details</button>
-                        <button className={studentId?'btn  btn-space':'hidden'} onClick={() => this.logout()}> Logout</button>
+                        <button className= {studentId?'btn btn-space':'hidden'} onClick={() => this.editProfile()}>edit profile</button>
+                        <button className= {studentId?'btn  btn-space':'hidden'} onClick={() => this.logout()}> Logout</button>
                     </div>
                 </div>
                 <div className=''>
@@ -136,11 +137,11 @@ class ShowProfileComponent extends React.Component {
                 {/**basic Details */}
                 <div className='border11 do-center'>
                     <table>
-                        <tr><thead></thead><thead></thead></tr>
-                        <tr><td>first Name :</td><td>{this.state.student.firstName}</td></tr>
+                    <thead><tr><th></th><th></th></tr></thead>
+                        <tbody><tr><td>first Name :</td><td>{this.state.student.firstName}</td></tr>
                         <tr><td>last Name :</td><td>{this.state.student.lastName}</td></tr>
                         <tr><td>prn :</td><td>{this.state.student.prn}</td></tr>
-                        <tr><td>date of birth :</td><td>{this.state.student.dob}</td></tr>
+                        <tr><td>date of birth :</td><td>{this.state.student.dob}</td></tr></tbody>
                     </table>
                 </div>
 
@@ -150,8 +151,8 @@ class ShowProfileComponent extends React.Component {
                     <div>
 
                         <table>
-                        <tr><thead></thead><thead></thead></tr>
-                            <tr><td>marks of 10th std :</td><td>{this.state.student.mark10th}</td></tr>
+                        <thead><tr><th></th><th></th></tr></thead>
+                        <tbody>    <tr><td>marks of 10th std :</td><td>{this.state.student.mark10th}</td></tr>
                             <tr><td>Passing year 10th :</td><td>{this.state.student.passingYear10th}</td></tr>
                             <tr><td>marks of 12th Std :</td><td>{this.state.student.mark12th}</td></tr>
                             <tr><td>Passing year 12th :</td><td>{this.state.student.passingYear12th}</td></tr>
@@ -161,7 +162,7 @@ class ShowProfileComponent extends React.Component {
                             <tr><td>Passing year graduation :</td><td>{this.state.student.passingYearGrad}</td></tr>
                             <tr><td>marks of post graduation :</td><td> {this.state.student.markPostGrad}</td></tr>
                             <tr><td> Passing year post graduation :</td><td>{this.state.student.passingYearPostGrad}</td></tr>
-                            <tr><td>marks of CCEE :</td><td>{this.state.student.markCCEE}</td></tr>
+                            <tr><td>marks of CCEE :</td><td>{this.state.student.markCCEE}</td></tr></tbody>
                         </table>
 
                     </div>
@@ -172,11 +173,11 @@ class ShowProfileComponent extends React.Component {
                 <div className='border11 do-center-3'>
                     <div>
                         <table>
-                        <tr><thead></thead><thead></thead></tr>
-                        <tr><td>mobile :</td><td> {this.state.student.mobNo}</td></tr>
+                        <thead><tr><th></th><th></th></tr></thead>
+                        <tbody><tr><td>mobile :</td><td> {this.state.student.mobNo}</td></tr>
                         <tr><td>email :</td><td>{this.state.student.email}</td></tr>
                         <tr><td>git profile link :</td><td>{this.state.student.gitLink}</td></tr>
-                        <tr><td>linkedIn profile link :</td><td>{this.state.student.linkedIn}</td></tr>
+                        <tr><td>linkedIn profile link :</td><td>{this.state.student.linkedIn}</td></tr></tbody>
                         </table>
                        
                     </div>
@@ -188,19 +189,17 @@ class ShowProfileComponent extends React.Component {
                 <div className='border11 do-center-3'>
                     <div>
                     <table>
-                        <tr><thead></thead><thead></thead></tr>
-                        <tr><td>course :</td><td> {this.state.student.courseName}</td></tr>
+                    <thead><tr><th></th><th></th></tr></thead>
+                     <tbody>   <tr><td>course :</td><td> {this.state.student.courseName}</td></tr>
                         <tr><td>batch :</td><td>{this.state.student.batch}</td></tr>
-                        <tr><td>year :</td><td>{this.state.student.year}</td></tr>
+                        <tr><td>year :</td><td>{this.state.student.year}</td></tr></tbody>
                         </table>
                         </div>
                         </div>
 
                     {/**Placement Details */}
 
-                <div className='text-center'>
-                <button className= {studentId?'btn do-center-4':'hidden'} onClick={() => this.editProfile()}>edit profile</button>
-                </div>
+               
             </div>
 
         )

@@ -21,21 +21,25 @@ class AddProjectDetailComponent extends Component{
 
     saveDetails = (e) => {
         e.preventDefault();
-        let user = {projectName: this.state.projectName, projectDescription: this.state.projectDescription,projectGitLink: this.state.projectGitLink};
-        ApiService.addUser(user)
+        let project = {projectName: this.state.projectName, projectDescription: this.state.projectDescription,projectGitLink: this.state.projectGitLink};
+        ApiService.addProjectDetails(project)
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({message : 'Project Details Added Successfully.'});
-                this.props.history.push('/users');
+                document.getElementById('123').click();
+                this.props.history.push('/showProfile');
             }).catch( err=>{
               //  console.error(err);
-                console.error("in err ",err.response.data);
+                console.error("in err ",err);
                 //err.response.data => DTO on the server side : ErrorResponse
-                alert(err.response.data.message);             
-                this.props.history.push('/users');
+                alert(err);             
+                this.props.history.push('/');
             })
             
     }
+
+    onChange = (e) =>
+        this.setState({ [e.target.name]: e.target.value });
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });

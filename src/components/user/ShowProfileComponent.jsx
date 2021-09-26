@@ -101,12 +101,11 @@ class ShowProfileComponent extends React.Component {
 
     editProfile() {
         this.props.history.push({
-            pathname: '/edit-profile',
-
-            state: { student: this.state.student }
-
-        })
-    }
+          pathname: "/edit-profile",
+    
+          state: { student: this.state.student },
+        });
+      }
 
 
     render() {

@@ -19,42 +19,28 @@ class AuthUserComponent extends Component{
         // prevent the default action
         e.preventDefault();
         // send the login request
-        let cred= { userName : this.state.userName, password : this.state.password  };
-        ApiService.loginUser(cred).then((resp)=>{
-            // got the user
-            console.log("logged in user id is "+resp.data.id);
-            // set session storage
-            sessionStorage.setItem("studentid",resp.data.id);
-
-            //fetch photo
-
-            ApiService.fetchPhoto(resp.data.id).then((resp1)=>{
-
-                console.log("found photo id : "+resp1.data.id);
-                resp.data.photo=resp1.data;
-                
-            }).catch((err)=>{
-
-                console.log("err in finding photo is : "+err);
-                resp.data.photo=null;
-
-            }).finally(()=>{
-                console.log("finnaly push if photo found or not but logged in ");
-
-                this.props.history.push({
-                    pathname:"/profile",
-                    state : {student : resp.data}
-                });
-                window.location.reload();
-
-            });
-
-        }).catch((err)=>{
-            console.log("cannot log in err: "+err);
+        let cred = { userName: this.state.userName, password: this.state.password };
+        ApiService.loginUser(cred)
+          .then((resp) => {
+            // got the user with jwt
+            console.log(resp.data);
+            sessionStorage.setItem("token", resp.data.jwt);
+            sessionStorage.setItem("studentid", resp.data.user.id);
+            if (resp.data.user.prn) {
+              this.props.history.push({
+                pathname: "/profile",
+                state: { student: resp.data.user, loginUser: true },
+              });
+              window.location.reload();
+            } else {
+              this.props.history.push("/");
+            }
+          })
+          .catch((err) => {
+            console.log("cannot log in err: " + err);
             this.props.history.push("/sign-in");
-        });
-
-    }
+          });
+      };
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });

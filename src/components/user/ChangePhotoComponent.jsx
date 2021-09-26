@@ -27,26 +27,25 @@ class ChangePhotoComponent extends Component {
 
     uploadPhoto= (e) =>{
         e.preventDefault();
-        let id = sessionStorage.getItem('studentid');
         const formData = new FormData();
         formData.append("studentPhoto", this.state.photofile, this.state.photofile.name);
-        ApiService.uploadPhoto(id,formData).then(resp=>{
+        ApiService.uploadPhoto(formData).then(resp=>{
             console.log(resp);
             console.log(resp.data);
             
             this.props.history.push({
                 pathname: '/profile',
-               
                 state: { student: this.state.student }
                 
-              })
-        }).catch(err=>{
-                console.log(err);
-                return 'failed to upload';
-        })
-            
-        
-    }
+            })
+      }).catch(err=>{
+              console.log(err);
+              alert('Error');
+              return 'failed to upload';
+      })
+          
+      
+  }
 
     render() {
         return (

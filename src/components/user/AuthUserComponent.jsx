@@ -66,7 +66,7 @@ class AuthUserComponent extends Component{
 
     render() {
         return(
-            <div className='signupScreen'>
+            <div className='signupScreen margin-top-1'>
                 <form>
                 <h1>Sign in!</h1>
                 <div className="form-group">

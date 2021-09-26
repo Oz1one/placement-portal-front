@@ -4,6 +4,7 @@ body{
 
 .card{
     width:20rem;
+    margin:1rem;
 }
 
 .card:hover{
@@ -54,3 +55,43 @@ body{
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+
+  .justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+  }
+
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  /* .col-md-3{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  } */
+
+  .text-center {
+    text-align: center !important;
+  }
+  
+

@@ -9,3 +9,23 @@
     height: 30px;
     width: 100px;
 }
+
+.home,
+.home2 {
+
+  margin: 0;
+  padding: 0;
+  font-size: 3vmin;
+}
+
+.home {
+  background: #151515;
+  color: #fff;
+  overflow: hidden;
+}
+
+.home2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

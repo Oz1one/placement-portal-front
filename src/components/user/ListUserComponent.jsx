@@ -205,7 +205,7 @@ showProfile(id) {
             return (
               <div>
                 <div className='text-center'>
-                <input type='text' onChange={e=>this.setState({filterStr:e.target.value})} />
+                Search: <input type='text' onChange={e=>this.setState({filterStr:e.target.value})} />
                 <fieldset className='batch-details'>
           <legend>Select Course </legend>
             <div className="select-container">

@@ -1,13 +1,14 @@
 .signupScreen{
     max-width: 300px;
-    padding: 70px;
+    padding: 2rem;
     margin-left: auto;
     margin-right: auto;
     background: rgba(0,0,0,0.85);
+    border-radius: 5px;
 }
 
 .signupScreen>form>h1{
-    text-align: left;
+    text-align: center;
     color: #fff;
     margin-bottom: 25px;
 }
@@ -57,3 +58,24 @@
 .form-group>label{
     color: #fff;
 }
+
+.form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+
+
+  .custom-button{
+      margin-top: 1.5rem;
+      margin-left: 8.5rem;
+  }
+
+  .margin-top-1{
+      margin-top: 10rem;
+      padding:3rem;
+  }
+
+  .custom-width{
+      max-width: 26rem;
+  }

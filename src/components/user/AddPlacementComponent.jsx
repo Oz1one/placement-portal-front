@@ -84,7 +84,7 @@ class AddPlacementComponent extends Component{
 
     render() {
         return(
-            <div className='signupScreen'>
+            <div className='signupScreen custom-signup'>
               <h1 style={{
             'color': 'white'
           }}>Add Placement Details!</h1>
@@ -96,7 +96,7 @@ class AddPlacementComponent extends Component{
               <fieldset className='batch-details'>
 
             <div className="form-group">
-              <span>Company</span>
+              <label>Company</label>
               <select name='companyName' className='form-control' value={this.state.companyName} onChange={this.onChange}>
                 {companyName.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -104,8 +104,8 @@ class AddPlacementComponent extends Component{
               </select>
             </div>
 
-            <div className="select-container">
-              <span>Round</span>
+            <div className="form-group">
+              <label>Round</label>
               <select name='round' className='form-control' value={this.state.round} onChange={this.onChange}>
                 {round.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>
@@ -114,7 +114,7 @@ class AddPlacementComponent extends Component{
             </div>
 
             <div className="form-group">
-              <span>Were you selected?</span>
+              <label>Were you selected?</label>
               <select name='isSelected' className='form-control' value={this.state.isSelected} onChange={this.onChange}>
                 {isSelected.map((option) => (
                   <option key={option.value} value={option.value}>{option.label}</option>

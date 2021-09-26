@@ -3,39 +3,39 @@ import './Banner.scss'
 
 const slides = [
     {
-      title: "Machu Picchu",
-      subtitle: "Peru",
-      description: "Adventure is never far away",
+      title: "Facing Doubts?",
+      subtitle: "What questions will they ask me in interview?",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1571771019784-3ff35f4f4277?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        "https://images.unsplash.com/photo-1516027828283-84217f09f3c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=428&q=80"
     },
     {
-      title: "Chamonix",
-      subtitle: "France",
-      description: "Let your dreams come true",
+      title: "Don't Worry!! We got you covered!!",
+      subtitle: "See the countless profiles and compare them with that of yourself",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1581836499506-4a660b39478a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        "https://images.unsplash.com/photo-1421986527537-888d998adb74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
     },
     {
-      title: "Mimisa Rocks",
-      subtitle: "Australia",
-      description: "A piece of heaven",
+      title: "Prepare!!!",
+      subtitle: "Go through the precise and 100% real question asked in interviews and prepare",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1566522650166-bd8b3e3a2b4b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
     },
     {
-      title: "Four",
-      subtitle: "Australia",
-      description: "A piece of heaven",
+      title: "Connect!!",
+      subtitle: "Connect with experts in the fields and learn..",
+      description: "",
       image:
-        "https://images.unsplash.com/flagged/photo-1564918031455-72f4e35ba7a6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        "https://images.unsplash.com/photo-1580795479172-6c29db0fd7c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
     },
     {
-      title: "Five",
-      subtitle: "Australia",
-      description: "A piece of heaven",
+      title: "Give back!!!",
+      subtitle: "Share your experience and help the community.",
+      description: "",
       image:
-        "https://images.unsplash.com/photo-1579130781921-76e18892b57b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+        "https://images.unsplash.com/photo-1528605105345-5344ea20e269?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
     }
   ];
 

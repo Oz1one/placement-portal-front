@@ -50,17 +50,19 @@ class ChangePhotoComponent extends Component {
 
     render() {
         return (
-            <div >
-                <div className='text-center'><h1>Upload Photo!!</h1></div>
-                <div className='text-center'>
+
+            <div className='signupScreen'>
+            <form>
+                <h1>Upload Resume!!</h1>
+                <div className='form-group'>
                     
-                    <input type='file' onChange={this.onChange} />
-                    <input type='submit' className='btn' value='Upload' onClick={this.uploadPhoto} />
+                    <input type='file' className='form-control custom-width' onChange={this.onChange} />
+                    <input type='submit' className='btn btn-success custom-button' value='Upload' onClick={this.uploadPhoto} />
                     
                     </div>
-                    
+                    </form>
                 </div>
-
+           
 
 
             

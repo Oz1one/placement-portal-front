@@ -62,9 +62,11 @@ class AddPlacementComponent extends Component{
     savePlacememtDetails=(e)=>{
       e.preventDefault();
       let placementDetails={ round:this.state.round, isSelected:this.state.isSelected, companyName:this.state.companyName }
-      ApiService.addPlcementdetail(placementDetails).then(resp=>{
+      console.log("this is place"+placementDetails);
+      ApiService.addPlacementDetail(placementDetails).then(resp=>{
         console.log(resp.data);
         this.setState({message : 'Placement Detail added successfully.'});
+        document.getElementById('123').click();
       }).catch(err=>{
         console.error("in err ",err.response.data);
                 //err.response.data => DTO on the server side : ErrorResponse
@@ -72,6 +74,7 @@ class AddPlacementComponent extends Component{
       })
       
     }
+
 
     
 

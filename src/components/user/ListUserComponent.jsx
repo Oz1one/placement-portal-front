@@ -207,8 +207,10 @@ showProfile(id) {
                 <div className='text-center'>
                 Search: <input type='text' onChange={e=>this.setState({filterStr:e.target.value})} />
                 <fieldset className='batch-details'>
+                  
           <legend>Select Course </legend>
             <div className="select-container">
+            
               <span>Year</span>
               <select name='year' value={this.state.year}
                 onChange={e=>this.setState({year:e.target.value})}>

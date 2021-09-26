@@ -55,7 +55,7 @@ class AddProjectDetailComponent extends Component{
                 </div>
                 <div className="form-group">
                     <label>Project git Link :</label>
-                    <input type="text" placeholder="gitLink" name="gitLink" className="form-control" value={this.state.gitLink} onChange={this.onChange}/>
+                    <input type="text" placeholder="gitLink" name="projectGitLink" className="form-control" value={this.state.projectGitLink} onChange={this.onChange}/>
                 </div>
                 <button className="btn btn-success" onClick={this.saveDetails}> Add </button>
                </form>

@@ -15,34 +15,38 @@ const companyName = [
 
 class AddQuestionsComponent extends Component {
 
-    constructor(props){
-        super(props);
-        this.state ={
-            Question: "",
-            message: null
-        }
-        this.saveQuestions = this.saveQuestions.bind(this);
-        
+  constructor(props){
+    super(props);
+    this.state ={
+        question: "",
+        companyName : "TCS",
+        message: null
     }
+    this.saveQuestions = this.saveQuestions.bind(this);
+    
+}
 
-    saveQuestions=(e)=>{
-      e.preventDefault();
-      let que={questions:this.state.question}
-      ApiService.addquestion(que).then(resp=>{
-        console.log(resp.data);
-        this.setState({message : 'Question added successfully.'});
-      }).catch(err=>{
-        console.error("in err ",err.response.data);
-                //err.response.data => DTO on the server side : ErrorResponse
-                alert(err.response.data.message);           
-          })
-      }
-            
+saveQuestions=(e)=>{
+  e.preventDefault();
+  let que={question:this.state.question, companyName : this.state.companyName};
+  console.log(que.companyName);
+  ApiService.addQuestion(que).then(resp=>{
+    window.location.reload();
+    console.log(resp.data);
+    this.setState({message : 'Question added successfully.'});
+  }).catch(err=>{
+    console.error("in err ",err.response.data);
+            //err.response.data => DTO on the server side : ErrorResponse
+            alert(err.response.data.message);           
+      })
+  }
+        
 
 
-    onChange = (e) =>
-        this.setState({ [e.target.name]: e.target.value });
-
+onChange = (e) =>{
+    this.setState({ [e.target.name]: e.target.value });
+  console.log(this.state[e.target.name]);
+  }
          
 
     render() {
@@ -64,7 +68,7 @@ class AddQuestionsComponent extends Component {
             <div className="form-group">
             <label>Add Question:</label>
                     
-                    <input type="text" placeholder="questions" name="questions" className="form-control" value={this.state.questions} onChange={this.onChange}/>
+                    <input type="text" placeholder="question" name="question" className="form-control" value={this.state.question} onChange={this.onChange}/>
                 </div>
                 <button className="btn btn-success"  onClick={this.saveQuestions}> Add </button>
         </form>  

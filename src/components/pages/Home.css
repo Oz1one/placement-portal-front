@@ -13,7 +13,8 @@
 .home,
 .home2 {
 
-  margin: 0;
+  
+  margin-top:-20px;
   padding: 0;
   font-size: 3vmin;
 }
@@ -28,4 +29,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }

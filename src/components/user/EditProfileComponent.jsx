@@ -1,52 +1,70 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import ApiService from "../../service/ApiService";
-import './AddUserComponent.css'
+import "./AddUserComponent.css";
 
 class EditProfileComponent extends Component {
+  constructor(props) {
+    super(props);
+   
+    this.state = {
+        firstName: props.location.state.student.firstName,
+        lastName: props.location.state.student.lastName,
+        dob: props.location.state.student.dob,
+        email: props.location.state.student.email,
+        mobNo: props.location.state.student.mobNo,
+        address: props.location.state.student.address,
+        gitLink: props.location.state.student.gitLink,
+        linkedIn: props.location.state.student.linkedIn,
+        mark10th: props.location.state.student.mark10th,
+        mark12th: props.location.state.student.mark12th,
+        markDiploma: props.location.state.student.markDiploma,
+        markGrad: props.location.state.student.markGrad,
+        markPostGrad: props.location.state.student.markPostGrad,
+        markCCEE: props.location.state.student.markCCEE,
+        passingYear10th: props.location.state.student.passingYear10th,
+        passingYear12th: props.location.state.student.passingYear12th,
+        passingYearDiploma: props.location.state.student.passingYearDiploma,
+        passingYearGrad: props.location.state.student.passingYearGrad,
+        passingYearPostGrad: props.location.state.student.passingYearPostGrad,
+      };
+     
+    this.saveStudent = this.saveStudent.bind(this);
+    this.onChange=this.onChange.bind(this);
+  }
 
-    constructor(props){
-        super(props);
-        this.state ={
-            
-                student: props.location.state.student,
-                
-            
-            photofile: '',
-            
-            message: null
-        }
-        this.uploadPhoto = this.uploadPhoto.bind(this);
-        this.onChange=this.onChange.bind(this);
-        
-    }
+  saveStudent(e) {
+    e.preventDefault();
+    let student = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      dob: this.state.dob,
+      email: this.state.email,
+      mobNo: this.state.mobNo,
+      address: this.state.address,
+      gitLink: this.state.gitLink,
+      linkedIn: this.state.linkedIn,
+      mark10th: this.state.mark10th,
+      mark12th: this.state.mark12th,
+      markDiploma: this.state.markDiploma,
+      markGrad: this.state.markGrad,
+      markPostGrad: this.state.markPostGrad,
+      markCCEE: this.state.markCCEE,
+      passingYear10th: this.state.passingYear10th,
+      passingYear12th: this.state.passingYear12th,
+      passingYearDiploma: this.state.passingYearDiploma,
+      passingYearGrad: this.state.passingYearGrad,
+      passingYearPostGrad: this.state.passingYearPostGrad,
+    };
+    ApiService.updateStudent(student).then((resp)=>{
+        alert(resp.data);
+        this.props.history.push('/showProfile');
+        document.getElementById('123').click();
+    }).catch((err)=>{
+      alert(err);
+    })
+}
 
-    onChange(e){
-        this.state.photofile=e.target.files[0];
-    }
-
-
-    uploadPhoto= (e) =>{
-        e.preventDefault();
-        let id = sessionStorage.getItem('studentid');
-        const formData = new FormData();
-        formData.append("studentPhoto", this.state.photofile, this.state.photofile.name);
-        ApiService.uploadPhoto(id,formData).then(resp=>{
-            console.log(resp);
-            console.log(resp.data);
-            
-            this.props.history.push({
-                pathname: '/profile',
-               
-                state: { student: this.state.student }
-                
-              })
-        }).catch(err=>{
-                console.log(err);
-                return 'failed to upload';
-        })
-            
-        
-    }
+onChange=(e)=>this.setState({[e.target.name]:e.target.value});
 
     render() {
         return (
@@ -172,7 +190,7 @@ class EditProfileComponent extends Component {
 
             
 
-            <button href='#sec' className="btn btn-success" onClick={this.saveStudent} >Register!</button>
+            <button href='#sec' className="btn btn-success" onClick={this.editStudent} >Register!</button>
         </form>
 
 
@@ -184,5 +202,6 @@ class EditProfileComponent extends Component {
         );
     }
 }
+
 
 export default EditProfileComponent;

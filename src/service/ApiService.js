@@ -1,68 +1,87 @@
 import axios from "axios";
 
-const USER_API_BASE_URL = 'http://localhost:8080/student';
+const LOGIN_API_BASE_URL = 'http://localhost:8080/login';
+const STUDENT_API_BASE_URL = 'http://localhost:8080/student';
+const PUBLIC_API_BASE_URL = 'http://localhost:8080/public';
+const REGISTRATION_API_BASE_URL = 'http://localhost:8080/registration';
 
 
 class ApiService {
 
     fetchStudent() {
-        return axios.post(USER_API_BASE_URL + '/allStudent');
+        return axios.get(PUBLIC_API_BASE_URL + '/get/allStudent');
     }
 
     fetchStudentById(Id) {
-        return axios.get(USER_API_BASE_URL + '/profile/' + Id);
+        return axios.get(PUBLIC_API_BASE_URL + '/profile/' + Id);
     }
 
     fetchPhoto(id) {
-        return axios.get("" + USER_API_BASE_URL + `/download/photo/${id}`);
+        return axios.get("" + PUBLIC_API_BASE_URL + '/download/photo/'+ id);
     }
 
     addStudent(student) {
-        return axios.post("" + USER_API_BASE_URL + '/registration', student);
+        return axios.post("" + REGISTRATION_API_BASE_URL , student);
 
     }
 
-    addLink(link) {
-        return axios.post("" + USER_API_BASE_URL, link);
-    }
+   
 
-    loginUser(user) {
-        return axios.post("" + USER_API_BASE_URL + '/login', user);
+    loginUser(cred) {
+        return axios.post("" + LOGIN_API_BASE_URL , cred);
     }
 
     editUser(user) {
-        return axios.put(USER_API_BASE_URL + '/' + user.id, user);
+        let token = sessionStorage.getItem('token');
+        return axios.put('/update/details/', user, {headers : { 'Authorization': token }});
     }
-    addCred(cred) {
-        return axios.post("" + USER_API_BASE_URL + '/credential/1', cred);
-    }
+    
 
     fetchResume(id) {
-        return axios.post("" + USER_API_BASE_URL + '/download/resume/' + id);
+        return axios.get("" + PUBLIC_API_BASE_URL + '/download/resume/' + id);
     }
 
-    uploadResume(id, formData) {
+    uploadResume(formData) {
+        let token = sessionStorage.getItem('token');
         return axios({
             method: "post",
-            url: "" + USER_API_BASE_URL + '/resume/' + id,
+            url: "" + STUDENT_API_BASE_URL + '/add/resume/',
             data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { "Content-Type": "multipart/form-data", Authorization :"Bearer "+ token }
         });
     }
 
+    uploadPhoto(formData) {
+        let token = sessionStorage.getItem('token');
 
-    uploadPhoto(id, formData) {
         return axios({
             method: "post",
-            url: "" + USER_API_BASE_URL + '/photo/' + id,
+            url: "" + STUDENT_API_BASE_URL + '/add/photo/',
             data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { 'Content-Type': "multipart/form-data", Authorization:"Bearer "+ token },
         });
     }
 
+    addPlacementDetail(placementDetails){
+        let token = sessionStorage.getItem('token');
 
-    addPlcementdetail(id, placementDetails){
-            return axios.post(""+USER_API_BASE_URL+'/placement'+id, placementDetails);
+            return axios.post(""+ STUDENT_API_BASE_URL + `/add/placement/` , placementDetails,{headers : { Authorization:"Bearer "+ token }});
+    }
+    addProjectDetails(project){
+        let token = sessionStorage.getItem('token');
+
+            return axios.post(""+ STUDENT_API_BASE_URL + `/add/project/` , project,{headers : { Authorization:"Bearer "+ token }});
+    }
+    addQuestion(question){
+        let token = sessionStorage.getItem('token');
+
+            return axios.post(""+ STUDENT_API_BASE_URL + `/add/question/` , question,{headers : { Authorization:"Bearer "+ token }});
+    }
+
+    updateStudent(student){
+        let token = sessionStorage.getItem('token');
+
+            return axios.put(""+ STUDENT_API_BASE_URL + `/update/details/` , student,{headers : { Authorization:"Bearer "+ token }});
     }
 
 

@@ -122,7 +122,8 @@ class RegisterUserComponent extends Component {
 
   saveStudent = (e) => {
     e.preventDefault();
-
+    const { userName, password, confirmPassword } = this.state;
+    
 
     let student = {
       course: { year: this.state.year, batch: this.state.batch, courseName: this.state.courseName },
@@ -135,6 +136,10 @@ class RegisterUserComponent extends Component {
       passingYear10th: this.state.passingYear10th, passingYear12th: this.state.passingYear12th,
       passingYearDiploma: this.state.passingYearDiploma, passingYearGrad: this.state.passingYearGrad, passingYearPostGrad: this.state.passingYearPostGrad
     };
+
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+  } else {
     ApiService.addStudent(student)
       .then(resp => {
         console.log(resp.data);//actual response data sent by back end
@@ -154,7 +159,7 @@ class RegisterUserComponent extends Component {
 
       })
 
-  }
+  }}
 
   onChange = (e) =>
     this.setState({ [e.target.name]: e.target.value });

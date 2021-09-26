@@ -9,28 +9,13 @@ import { ProfileButton } from './ProfileButton';
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const studentId= sessionStorage.getItem('studentid');
  
 
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
+ 
 
   
 
@@ -38,7 +23,7 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-        Placement Portal
+        <span className='logo-text'>Placement Portal</span>
           <i className='fab fa-firstdraft' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>
@@ -52,8 +37,7 @@ function Navbar() {
           </li>
           <li
             className='nav-item'
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+           
           >
             <Link
               to='/student'
@@ -82,9 +66,11 @@ function Navbar() {
               Contact Us
             </Link>
           </li>
-          
+          <li className='nav-item nav-links'>
+          {!studentId?<SigninButton />:<ProfileButton/>}
+          </li>
         </ul>
-      {!studentId?<SigninButton />:<ProfileButton/>}
+      
       </nav>
     </>
   );

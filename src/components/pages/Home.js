@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../App.css';
 import img1 from '../../images/cdaclogo.png'
-import Navbar from '../Navbar';
 import Banner from './Banner';
 import './Home.css'
 

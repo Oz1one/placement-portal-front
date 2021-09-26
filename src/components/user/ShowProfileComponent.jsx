@@ -25,7 +25,7 @@ class ShowProfileComponent extends React.Component {
             // set the photo as the property of student
             console.log("found photo id ",resp.data.id);
             this.state.student.photo = resp.data;
-          
+          document.getElementsByTagName('img')[0].src="data:image/png;base64," + this.state.student.photo.photo;
           }).catch(err =>{
             
             console.log("err in finding photo",err);

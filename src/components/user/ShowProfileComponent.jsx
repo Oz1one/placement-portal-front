@@ -180,9 +180,24 @@ class ShowProfileComponent extends React.Component {
                         </table>
                        
                     </div>
-
-                {/**place Details */}
                 </div>
+
+
+
+                {/**Course Details */}
+                <div className='border11 do-center-3'>
+                    <div>
+                    <table>
+                        <tr><thead></thead><thead></thead></tr>
+                        <tr><td>course :</td><td> {this.state.student.courseName}</td></tr>
+                        <tr><td>batch :</td><td>{this.state.student.batch}</td></tr>
+                        <tr><td>year :</td><td>{this.state.student.year}</td></tr>
+                        </table>
+                        </div>
+                        </div>
+
+                    {/**Placement Details */}
+
                 <div className='text-center'>
                 <button className= {studentId?'btn do-center-4':'hidden'} onClick={() => this.editProfile()}>edit profile</button>
                 </div>

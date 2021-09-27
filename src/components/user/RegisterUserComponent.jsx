@@ -144,7 +144,7 @@ class RegisterUserComponent extends Component {
       .then(resp => {
         console.log(resp.data);//actual response data sent by back end
         this.setState({ message: 'Student registered successfully.' });
-        alert(resp.data);
+        alert('Successfully Registered');
         this.props.history.push({
           pathname: '/sign-in',
 

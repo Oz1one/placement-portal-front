@@ -38,6 +38,7 @@ class AuthUserComponent extends Component{
           })
           .catch((err) => {
             console.log("cannot log in err: " + err);
+            alert('Something went wrong.Please try again!!')
             this.props.history.push("/sign-in");
           });
       };

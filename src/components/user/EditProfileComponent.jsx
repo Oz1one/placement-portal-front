@@ -5,8 +5,8 @@ import "./AddUserComponent.css";
 class EditProfileComponent extends Component {
   constructor(props) {
     super(props);
-   
-    this.state = {
+    if (props.location.state && props.location.state.student) {
+      this.state = {
         firstName: props.location.state.student.firstName,
         lastName: props.location.state.student.lastName,
         dob: props.location.state.student.dob,
@@ -27,9 +27,10 @@ class EditProfileComponent extends Component {
         passingYearGrad: props.location.state.student.passingYearGrad,
         passingYearPostGrad: props.location.state.student.passingYearPostGrad,
       };
-     
-    this.saveStudent = this.saveStudent.bind(this);
-    this.onChange=this.onChange.bind(this);
+
+      this.saveStudent = this.saveStudent.bind(this);
+      this.onChange = this.onChange.bind(this);
+    }
   }
 
   saveStudent(e) {
@@ -68,13 +69,21 @@ onChange=(e)=>this.setState({[e.target.name]:e.target.value});
 
 
   render() {
+    if(!this.state){
+      this.props.history.push('/');
+      return <></>;
+    }
     return (
       <div>
         <h2 className="text-center">Edit Profile!</h2>
 
         <form>
+        <div className='edit-grid'>
+          <div>
           <fieldset>
+          
             <legend className="increase-font-2">Basic Details!</legend>
+            
             <div className="form-group">
               <span className="increase-font">First Name:</span>
               <input
@@ -108,7 +117,8 @@ onChange=(e)=>this.setState({[e.target.name]:e.target.value});
               />
             </div>
           </fieldset>
-
+          </div>
+        <div>
           <fieldset>
             <legend className="increase-font-2">Academic Details!</legend>
 
@@ -244,7 +254,8 @@ onChange=(e)=>this.setState({[e.target.name]:e.target.value});
               />
             </div>
           </fieldset>
-
+          </div>
+      <div>
           <fieldset>
             <legend className="increase-font-2">Contact Details!</legend>
 
@@ -308,10 +319,14 @@ onChange=(e)=>this.setState({[e.target.name]:e.target.value});
               />
             </div>
           </fieldset>
+          </div>
 
+          
+          </div>
+          
           <button
             href="#sec"
-            className="btn btn-success"
+            className="btn btn-success padd-center"
             onClick={this.saveStudent}
           >
             Update!

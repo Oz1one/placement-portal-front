@@ -6,8 +6,9 @@
 }
 .cdaclogo{
     align-items:center ;
-    height: 30px;
-    width: 100px;
+    height: 10rem;
+    width: 40rem;
+    
 }
 
 .home,
@@ -30,4 +31,9 @@
   justify-content: center;
   align-items: center;
   
+}
+.home-footer-grid{
+  display:flex;
+  justify-content: center;
+  margin-top: 0.007rem;
 }

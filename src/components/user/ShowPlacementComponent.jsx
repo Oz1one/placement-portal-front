@@ -7,6 +7,7 @@ import ApiService from "../../service/ApiService";
   
     constructor(props) {
       super(props)
+      if(this.props.location.state && props.location.state.student){
       this.state = {
           placement: [],
           message: null,
@@ -16,10 +17,13 @@ import ApiService from "../../service/ApiService";
       }
 
       this.showAllQuestions = this.showAllQuestions.bind(this);
+    }
   }
 
     componentDidMount() {
+      if(this.state){
         this.reloadUserList();
+      }
     }
 
 
@@ -43,7 +47,7 @@ import ApiService from "../../service/ApiService";
     // fetch the student using id 
     ApiService.fetchQuestions(id).then((resp)=>{
       
-      console.log("found questions with id ",resp.data.id);
+      console.log("found questions ",resp.data);
       // fetch the questions 
       this.props.history.push({
         pathname:"/show-question",
@@ -58,6 +62,11 @@ import ApiService from "../../service/ApiService";
   }
 
     render() {
+
+      if (!(this.state && this.state.student)) {
+        this.props.history.push("/");
+        return <></>;
+      }
 
 
 

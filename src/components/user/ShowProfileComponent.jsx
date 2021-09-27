@@ -15,31 +15,27 @@ class ShowProfileComponent extends React.Component {
 
     constructor(props) {
         super(props);
-        try {
-            this.state = {
-                student: props.location.state.student,
-                message: null,
-            };
-
-            ApiService.fetchPhoto(this.state.student.id)
-                .then((resp) => {
-                    // set the photo as the property of student
-                    console.log("found photo id ", resp.data.id);
-                    this.state.student.photo = resp.data;
-                    document.getElementsByTagName("img")[0].src =
-                        "data:image/png;base64," + this.state.student.photo.photo;
-
-                }).catch((err) => {
-                    console.log("err in finding photo", err);
-                    this.state.student.photo = null;
-                });
-        } catch (err) {
-            alert(err);
-            this.props.history.push('/');
+    
+        if (props.location.state && props.location.state.student) {
+          this.state = {
+            student: props.location.state.student,
+            message: null,
+          };
+    
+          ApiService.fetchPhoto(this.state.student.id)
+            .then((resp) => {
+              // set the photo as the property of student
+              console.log("found photo id ", resp.data.id);
+              this.state.student.photo = resp.data;
+              document.getElementsByTagName("img")[0].src =
+                "data:image/png;base64," + this.state.student.photo.photo;
+            })
+            .catch((err) => {
+              console.log("err in finding photo", err);
+              this.state.student.photo = null;
+            });
         }
-    }
-
-
+      }
 
     uploadResume() {
         this.props.history.push({
@@ -144,6 +140,11 @@ class ShowProfileComponent extends React.Component {
 
 
     render() {
+        
+        if (!(this.state && this.state.student)) {
+            this.props.history.push("/");
+            return <></>;
+          }
 
 
         if (!this.state.student)
@@ -159,7 +160,7 @@ class ShowProfileComponent extends React.Component {
                 <div>
                     <div className='text-center'>
                         <a href={resumelink} target='_blank' rel='noopener noreferrer' >
-                            <button className='btn  btn-space'> Download Resume</button></a>
+                            <button className='btn  btn-space'> Show Resume</button></a>
 
                         <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
                         <button className='btn  btn-space' onClick={() => this.showProjectDetails()}> Show Project Details</button>

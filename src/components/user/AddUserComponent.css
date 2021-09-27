@@ -80,3 +80,38 @@
       max-width: 26rem;
   }
 
+
+
+
+
+  .edit-grid{
+    display:flex;
+    margin-left: 23rem;
+}
+
+.padd-center{
+    margin-left: 70rem;
+    margin-bottom: 5rem;
+}
+
+.edit-grid>div{
+    margin-right: 25rem;
+}
+
+
+@media screen and (max-width: 960px){
+    .edit-grid{
+        display:flex;
+        flex-direction: column;
+        margin-left: 5rem;
+    }
+
+    .padd-center{
+        margin-left: 20rem;
+        margin-bottom: 5rem;
+    }
+
+    .edit-grid>div{
+        margin-right: 2rem;
+    }
+}

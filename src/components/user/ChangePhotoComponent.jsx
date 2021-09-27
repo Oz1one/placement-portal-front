@@ -6,7 +6,8 @@ class ChangePhotoComponent extends Component {
 
     constructor(props){
         super(props);
-        this.state ={
+        
+        if(this.props.location.state &&  props.location.state.student){this.state ={
             
                 student: props.location.state.student,
                 
@@ -17,7 +18,7 @@ class ChangePhotoComponent extends Component {
         }
         this.uploadPhoto = this.uploadPhoto.bind(this);
         this.onChange=this.onChange.bind(this);
-        
+        }
     }
 
     onChange(e){
@@ -52,6 +53,10 @@ class ChangePhotoComponent extends Component {
   }
 
     render() {
+        if(!this.state){
+            this.props.history.push('/');
+            return <></>;
+          }
         return (
 
             <div className='signupScreen'>

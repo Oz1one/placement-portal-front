@@ -36,20 +36,22 @@ let companyName = [];
 
 class AddPlacementComponent extends Component{
 
-    constructor(props){
-        super(props);
-        this.state ={
-          companyNames: props.location.state.companyNames,
-         
-          round:"HR",
-          isSelected:"NO",
-          companyName:props.location.state.companyNames[0],
-            message: null
-        }
-        this.savePlacememtDetails = this.savePlacememtDetails.bind(this);
-        companyName = this.state.companyNames.map((cname)=>{return {label : cname, value : cname}});
-        console.log(companyName);
+  constructor(props){
+    super(props);
+    if(this.props.location.state&&this.props.location.state.companyNames){
+    this.state ={
+      companyNames: this.props.location.state.companyNames,
+     
+      round:"HR",
+      isSelected:"NO",
+      companyName:props.location.state.companyNames[0],
+        message: null
     }
+    this.savePlacememtDetails = this.savePlacememtDetails.bind(this);
+    companyName = this.state.companyNames.map((cname)=>{return {label : cname, value : cname}});
+    console.log(companyName);
+  }
+}
     
     savePlacememtDetails=(e)=>{
       e.preventDefault();
@@ -76,6 +78,10 @@ class AddPlacementComponent extends Component{
           
 
     render() {
+      if(!this.state){
+        this.props.history.push('/');
+        return <></>
+      }
         return(
             <div className='signupScreen custom-signup'>
               <h1 style={{

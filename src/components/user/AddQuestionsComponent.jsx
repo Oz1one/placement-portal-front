@@ -16,8 +16,8 @@ let companyName = [
 class AddQuestionsComponent extends Component {
 
   constructor(props){
-    
     super(props);
+    if(this.props.location.state && props.location.state.placements){
     
     this.state ={
         question: "",
@@ -29,7 +29,7 @@ class AddQuestionsComponent extends Component {
     companyName = [...(new Set(this.state.placements.map(p => p.companyName)))].map(c => {return {label : c,value : c}});
   
     this.saveQuestions = this.saveQuestions.bind(this);
-    
+  }
 }
 
 saveQuestions=(e)=>{
@@ -61,6 +61,11 @@ onChange = (e) =>{
          
 
     render() {
+
+      if(!this.state){
+        this.props.history.push('/');
+        return <></>;
+      }
          return (
         <div className='signupScreen'>
             <form>

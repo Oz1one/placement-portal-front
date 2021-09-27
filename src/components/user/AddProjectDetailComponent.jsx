@@ -5,19 +5,20 @@ import './AddUserComponent.css'
 
 class AddProjectDetailComponent extends Component{
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state ={
-
+        if (props.location.state && props.location.state.student) {
+          this.state = {
             student: props.location.state.student,
-
-            projectName: '',
-            projectDescription: '',
-            projectGitLink: '',
-            message: null
-     }
-        this.saveDetails = this.saveDetails.bind(this);
-    }
+    
+            projectName: "",
+            projectDescription: "",
+            projectGitLink: "",
+            message: null,
+          };
+          this.saveDetails = this.saveDetails.bind(this);
+        }
+      }
 
     saveDetails = (e) => {
         e.preventDefault();
@@ -46,6 +47,10 @@ class AddProjectDetailComponent extends Component{
         this.setState({ [e.target.name]: e.target.value });
 
     render() {
+        if(!this.state){
+            this.props.history.push('/');
+            return <></>
+          }
         return(
             <div className='signupScreen'>
                 <form>

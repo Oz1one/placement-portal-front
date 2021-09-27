@@ -123,43 +123,88 @@ class RegisterUserComponent extends Component {
   saveStudent = (e) => {
     e.preventDefault();
     const { userName, password, confirmPassword } = this.state;
-    
 
     let student = {
-      course: { year: this.state.year, batch: this.state.batch, courseName: this.state.courseName },
-      credential: { userName: this.state.userName, password: this.state.password },
-      firstName: this.state.firstName, lastName: this.state.lastName, prn: this.state.prn,
-      dob: this.state.dob, email: this.state.email, mobNo: this.state.mobNo, address: this.state.address,
-      gitLink: this.state.gitLink, linkedIn: this.state.linkedIn, mark10th: this.state.mark10th,
-      mark12th: this.state.mark12th, markDiploma: this.state.markDiploma, markGrad: this.state.markGrad,
-      markPostGrad: this.state.markPostGrad, markCCEE: this.state.markCCEE,
-      passingYear10th: this.state.passingYear10th, passingYear12th: this.state.passingYear12th,
-      passingYearDiploma: this.state.passingYearDiploma, passingYearGrad: this.state.passingYearGrad, passingYearPostGrad: this.state.passingYearPostGrad
+      course: {
+        year: this.state.year,
+        batch: this.state.batch,
+        courseName: this.state.courseName,
+      },
+      credential: {
+        userName: this.state.userName,
+        password: this.state.password,
+      },
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      prn: this.state.prn,
+      dob: this.state.dob,
+      email: this.state.email,
+      mobNo: this.state.mobNo,
+      address: this.state.address,
+      gitLink: this.state.gitLink,
+      linkedIn: this.state.linkedIn,
+      mark10th: this.state.mark10th,
+      mark12th: this.state.mark12th,
+      markDiploma: this.state.markDiploma,
+      markGrad: this.state.markGrad,
+      markPostGrad: this.state.markPostGrad,
+      markCCEE: this.state.markCCEE,
+      passingYear10th: this.state.passingYear10th,
+      passingYear12th: this.state.passingYear12th,
+      passingYearDiploma: this.state.passingYearDiploma,
+      passingYearGrad: this.state.passingYearGrad,
+      passingYearPostGrad: this.state.passingYearPostGrad,
     };
+    let valid = true;
+    for (var i in student) {
+      if (
+        i == "markDiploma" ||
+        i == "passingYearDiploma" ||
+        i == "mark12th" ||
+        i == "passingYear12th" ||
+        i == "passingYearPostGrad" ||
+        i == "markPostGrad"
+      )
+        continue;
+
+      if (!student[i]) {
+        valid = false;
+        alert("please add" + i);
+        break;
+      }
+    }
+    if (
+      !(
+        (student.markDiploma && student.passingYearDiploma) ||
+        (student.mark12th && student.passingYear12th)
+      )
+    ) {
+      valid = false;
+      alert("add 12th or diploma details");
+    }
 
     if (password !== confirmPassword) {
+      valid = false;
       alert("Passwords don't match");
-  } else {
-    ApiService.addStudent(student)
-      .then(resp => {
-        console.log(resp.data);//actual response data sent by back end
-        this.setState({ message: 'Student registered successfully.' });
-        alert('Successfully Registered');
-        this.props.history.push({
-          pathname: '/sign-in',
-
-         
-
+    }
+    if (valid) {
+      ApiService.addStudent(student)
+        .then((resp) => {
+          console.log(resp.data); //actual response data sent by back end
+          this.setState({ message: "Student registered successfully." });
+          alert("Successfully Registered");
+          this.props.history.push({
+            pathname: "/sign-in",
+          });
+        })
+        .catch((err) => {
+          //  console.error(err);
+          console.error("in err ", err.response.data);
+          //err.response.data => DTO on the server side : ErrorResponse
+          alert(err.response.data.message);
         });
-      }).catch(err => {
-        //  console.error(err);
-        console.error("in err ", err.response.data);
-        //err.response.data => DTO on the server side : ErrorResponse
-        alert(err.response.data.message);
-
-      })
-
-  }}
+    }
+  };
 
   onChange = (e) =>
     this.setState({ [e.target.name]: e.target.value });
@@ -212,6 +257,9 @@ class RegisterUserComponent extends Component {
         </div>
 
         <form>
+
+          <div className='edit-grid'>
+            <div>
           <fieldset>
             <legend className='increase-font-2'>Basic Details!</legend>
             
@@ -242,7 +290,8 @@ class RegisterUserComponent extends Component {
             
 
           </fieldset>
-
+          </div>
+                      <div>
           <fieldset>
             <legend className='increase-font-2'>Academic Details!</legend>
             
@@ -302,7 +351,9 @@ class RegisterUserComponent extends Component {
             </div>
                       
           </fieldset>
-
+          </div>
+          <div>
+                      <div>
           <fieldset>
             <legend className='increase-font-2'>Contact Details!</legend>
 
@@ -331,7 +382,10 @@ class RegisterUserComponent extends Component {
               <input type='text' placeholder='LinkedIn link' name="linkedIn" className="form-control width-control" value={this.state.linkedIn} onChange={this.onChange} />
             </div>
           </fieldset>
+          </div>
 
+                      <div>
+                        <div className='to-up'>
           <fieldset>
             <legend className='increase-font-2'>
               Credential Details!
@@ -354,9 +408,12 @@ class RegisterUserComponent extends Component {
 
 
           </fieldset>
+          </div>
+          </div>
+          </div>
 
 
-
+</div>
 
 
           <button href='#sec' className="btn btn-success" onClick={this.saveStudent} >Register!</button>

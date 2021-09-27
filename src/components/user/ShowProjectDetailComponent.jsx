@@ -5,6 +5,7 @@ export default class ShowProjectDetailComponent extends Component {
 
     constructor(props) {
         super(props)
+        if(props.location.state && props.location.state.student){
         this.state = {
             projects:[],
             message: null,
@@ -12,12 +13,14 @@ export default class ShowProjectDetailComponent extends Component {
   
             
         }
-  
+    }
         
     }
 
     componentDidMount() {
+        if(this.state){
         this.reloadProjectList();
+        }
     }
 
     reloadProjectList() {
@@ -32,6 +35,11 @@ export default class ShowProjectDetailComponent extends Component {
     }
 
     render() {
+
+        if (!(this.state && this.state.student)) {
+            this.props.history.push("/");
+            return <></>;
+          }
 
         let projects = this.state.projects.map(
             project =>

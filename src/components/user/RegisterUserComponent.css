@@ -9,12 +9,18 @@
     margin-bottom: 5px; */
 }
 
-.in-grid{
+/* .in-grid{
     display: grid;
-}
+   
+} */
 
 .width-control{
     width:20rem;
     padding:0.1rem;
     margin-left: 4px;
+}
+
+.flex-orient{
+    display:flex;
+    justify-content: center;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import ApiService from "../../service/ApiService";
+import './ListUserComponent.css'
 
 const year = [
     {
@@ -209,8 +210,10 @@ showProfile(id) {
                 <fieldset className='batch-details'>
                   
           <legend>Select Course </legend>
-            <div className="select-container">
+          <div className='flex-orient'>
+            <div className="select-container flex-item">
             
+              
               <span>Year</span>
               <select name='year' value={this.state.year}
                 onChange={e=>this.setState({year:e.target.value})}>
@@ -219,8 +222,8 @@ showProfile(id) {
                 ))}
               </select>
             </div>
-
-            <div className="select-container">
+              
+            <div className="select-container flex-item">
             <span>Batch</span>
               <select name='batch' value={this.state.batch}
               onChange={e=>this.setState({batch:e.target.value})}>
@@ -230,7 +233,7 @@ showProfile(id) {
               </select>
             </div>
 
-            <div className="select-container">
+            <div className="select-container flex-item">
             <span>Course</span>
               <select name='courseName' value={this.state.courseName} 
               onChange={e=>this.setState({courseName:e.target.value})}>
@@ -238,6 +241,7 @@ showProfile(id) {
                   <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
               </select>
+            </div>
             </div>
             
             </fieldset>

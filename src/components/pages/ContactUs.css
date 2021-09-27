@@ -1,5 +1,10 @@
 body{
     background:radial-gradient(#e5e5e5, #ffff, #e5e5e5);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* color: #e5e5e5 !important; */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Q4lubTMfE1NXx_uXVDg93pxKgyr28W6O2Q&usqp=CAU');
 }
 
 .card{

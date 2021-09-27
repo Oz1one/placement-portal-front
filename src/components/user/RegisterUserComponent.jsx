@@ -178,6 +178,7 @@ class RegisterUserComponent extends Component {
             <div className='body-batch-details'>
               <fieldset className='batch-details'>
                 <legend className='increase-font-2'>Batch Details!</legend>
+                <div className='flex-orient'>
                 <div className="select-container">
                   <span className='increase-font'>Year</span>
                   <select className='width-control' name='year' value={this.state.year} onChange={this.onChange}>
@@ -204,7 +205,7 @@ class RegisterUserComponent extends Component {
                     ))}
                   </select>
                 </div>
-
+                </div>
               </fieldset>
             </div>
           </form>
@@ -213,10 +214,14 @@ class RegisterUserComponent extends Component {
         <form>
           <fieldset>
             <legend className='increase-font-2'>Basic Details!</legend>
-            <div className="form-group">
+            
+            <div className="form-group change-to-grid">
+              
               <span className='increase-font'>First Name:</span>
+              
               <input placeholder="First Name" name="firstName" className="form-control width-control" value={this.state.firstName} onChange={this.onChange} />
-            </div>
+              </div>
+            
 
             <div className="form-group">
               <span className='increase-font'>Last Name:</span>
@@ -234,13 +239,13 @@ class RegisterUserComponent extends Component {
               <span className='increase-font'>PRN:</span>
               <input type='number' placeholder='prn' name="prn" className="form-control width-control" value={this.state.prn} onChange={this.onChange} />
             </div>
-
+            
 
           </fieldset>
 
           <fieldset>
             <legend className='increase-font-2'>Academic Details!</legend>
-
+            
             <div className="form-group">
               <span className='increase-font'>Class 10th marks:</span>
               <input type='number' placeholder='10th marks' name="mark10th" className="form-control width-control" value={this.state.mark10th} onChange={this.onChange} />
@@ -295,7 +300,7 @@ class RegisterUserComponent extends Component {
               <span className='increase-font'>CCEE marks:</span>
               <input type='number' placeholder='CCEE marks' name="markCCEE" className="form-control width-control" value={this.state.markCCEE} onChange={this.onChange} />
             </div>
-
+                      
           </fieldset>
 
           <fieldset>

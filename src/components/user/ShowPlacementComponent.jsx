@@ -6,17 +6,17 @@ import ApiService from "../../service/ApiService";
 
   
     constructor(props) {
-        super(props)
-        this.state = {
-            placement: [],
-            message: null,
+      super(props)
+      this.state = {
+          placement: [],
+          message: null,
+          student:props.location.state.student,
 
-            year: "ALL",
-            batch: "ALL",
-            courseName: "ALL",
-            filterStr:""
-        }
-    }
+          
+      }
+
+      this.showAllQuestions = this.showAllQuestions.bind(this);
+  }
 
     componentDidMount() {
         this.reloadUserList();
@@ -28,32 +28,34 @@ import ApiService from "../../service/ApiService";
 
 
     reloadUserList() {
-        ApiService.fetchPlacement()
-            .then((resp) => {
-                this.setState({placement: resp.data},()=>console.log(this.state.placement));
-            });
-           
-    }
+      ApiService.fetchPlacement(this.state.student.id)
+          .then((resp) => {
+              this.setState({placement: resp.data},()=>console.log(this.state.placement));
+          }).catch((err)=>{
+            alert(err);
+            console.log(err);
+          })
+         
+  }
 
 
-showProfile(id) {
-  // fetch the student using id 
-  ApiService.fetchStudentById(id).then((resp)=>{
-    
-    console.log("found student with id ",resp.data.id);
-    // fetch the image of the student 
-    this.props.history.push({
-      pathname:"/profile",
-      state : {placement : resp.data}
+  showAllQuestions(id) {
+    // fetch the student using id 
+    ApiService.fetchQuestions(id).then((resp)=>{
+      
+      console.log("found questions with id ",resp.data.id);
+      // fetch the questions 
+      this.props.history.push({
+        pathname:"/show-question",
+        state : {questions : resp.data}
+      });
+     
+  
+    }).catch((err)=>{
+      console.log("std not found err ", err);
     });
-   
-
-  }).catch((err)=>{
-    console.log("std not found err ", err);
-  });
-
-}
-
+  
+  }
 
     render() {
 
@@ -63,7 +65,7 @@ showProfile(id) {
         placement =>
                     <tr key={placement.cid}>
                         <td>
-                            {placement.CompanyName}
+                            {placement.companyName}
                         </td>
                         <td>{placement.round}</td>
                         <td>
@@ -71,7 +73,7 @@ showProfile(id) {
                         </td>
                         
                         
-                        <td><button className='btn' name={placement.cid} id={placement.cid} onClick={e => this.showProfile(e.target.id)}>View Profile</button></td>
+                        <td><button className='btn' name={placement.cid} id={placement.cid} onClick={e => this.showAllQuestions(e.target.id)}>Show Questions</button></td>
                         
                     </tr>
             );

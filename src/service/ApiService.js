@@ -88,6 +88,14 @@ class ApiService {
         return axios.get(PUBLIC_API_BASE_URL+"/fetch/companies");
     }
 
+    fetchPlacement(id){
+        return axios.get(PUBLIC_API_BASE_URL+"/fetch/placementdetails/"+id);
+    }
+    
+    fetchQuestions(cid){
+        return axios.get(PUBLIC_API_BASE_URL + "/getall/question/"+cid);
+    }
+
 
 }
 

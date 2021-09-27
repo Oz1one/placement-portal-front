@@ -19,6 +19,7 @@ import AddProjectDetailComponent from './components/user/AddProjectDetailCompone
 import ChangePhotoComponent from './components/user/ChangePhotoComponent';
 import EditProfileComponent from './components/user/EditProfileComponent';
 import ShowPlacementComponent from './components/user/ShowPlacementComponent'
+import ShowQuestionsComponent from './components/user/ShowQuestionsComponent';
 
 function App() {
   return (
@@ -31,8 +32,7 @@ function App() {
         <Route path='/student' component={ListUserComponent} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact-us' component={ContactUs} />
-        <Route path='/sign-in' component={AuthUserComponent} />
-      
+        <Route path='/sign-in' component={AuthUserComponent} />      
         <Route path='/register-user' component={RegisterUserComponent}/>
         <Route path='/profile' component={ShowProfileComponent}/>
         <Route path='/upload-resume' component={UploadResumeComponent}/>
@@ -42,6 +42,7 @@ function App() {
         <Route path='/change-photo' component={ChangePhotoComponent}/>
         <Route path='/edit-profile' component={EditProfileComponent}/>
         <Route path='/placement-details' component={ShowPlacementComponent}/>
+        <Route path='/show-question' component={ShowQuestionsComponent}/>
       </Switch>
     </Router>
     

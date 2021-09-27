@@ -84,6 +84,10 @@ class ApiService {
             return axios.put(""+ STUDENT_API_BASE_URL + `/update/details/` , student,{headers : { Authorization:"Bearer "+ token }});
     }
 
+    fetchCompanies(){
+        return axios.get(PUBLIC_API_BASE_URL+"/fetch/companies");
+    }
+
 
 }
 

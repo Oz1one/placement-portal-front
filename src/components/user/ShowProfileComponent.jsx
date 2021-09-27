@@ -51,12 +51,20 @@ class ShowProfileComponent extends React.Component {
     }
 
     addPlacementDetails() {
-        this.props.history.push({
-            pathname: '/add-placement-details',
+        ApiService.fetchCompanies().then((resp)=>{
+            console.log(resp.data);
+            this.props.history.push({
+                pathname: '/add-placement-details',
+                state: { companyNames : resp.data }
 
-            state: { student: this.state.student }
+            });
 
-        })
+        }).catch((err)=>{
+            console.log(err);
+            
+        }
+        );
+
 
     }
 

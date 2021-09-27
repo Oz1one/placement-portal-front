@@ -2,16 +2,7 @@ import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
 import './AddUserComponent.css'
 
-const companyName = [
-    {
-      label: "TCS",
-      value: "TCS",
-    },
-    {
-      label: "INFOSYS",
-      value: "INFOSYS",
-    }
-  ];
+let companyName = [];
 
   const round = [
     {
@@ -19,8 +10,8 @@ const companyName = [
       value: "CODING",
     },
     {
-      label: "GD",
-      value: "GD",
+      label: "APTITUDE",
+      value: "APTITUDE",
     },
     {
       label: "TECHNICAL",
@@ -48,21 +39,22 @@ class AddPlacementComponent extends Component{
     constructor(props){
         super(props);
         this.state ={
-          student: props.location.state.student,
+          companyNames: props.location.state.companyNames,
          
-          round:"",
-          isSelected:"",
-          companyName:'',
+          round:"HR",
+          isSelected:"NO",
+          companyName:props.location.state.companyNames[0],
             message: null
         }
         this.savePlacememtDetails = this.savePlacememtDetails.bind(this);
-        
+        companyName = this.state.companyNames.map((cname)=>{return {label : cname, value : cname}});
+        console.log(companyName);
     }
-
+    
     savePlacememtDetails=(e)=>{
       e.preventDefault();
       let placementDetails={ round:this.state.round, isSelected:this.state.isSelected, companyName:this.state.companyName }
-      console.log("this is place"+placementDetails);
+      console.log("this is place"+placementDetails.round,placementDetails.isSelected,placementDetails.companyName);
       ApiService.addPlacementDetail(placementDetails).then(resp=>{
         console.log(resp.data);
         this.setState({message : 'Placement Detail added successfully.'});
@@ -74,9 +66,6 @@ class AddPlacementComponent extends Component{
       })
       
     }
-
-
-    
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });

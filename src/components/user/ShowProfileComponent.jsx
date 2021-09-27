@@ -135,6 +135,13 @@ class ShowProfileComponent extends React.Component {
         })
     }
 
+    showProjectDetails() {
+        this.props.history.push({
+            pathname: "/project-details",
+            state: { student: this.state.student }
+        })
+    }
+
 
     render() {
 
@@ -155,6 +162,7 @@ class ShowProfileComponent extends React.Component {
                             <button className='btn  btn-space'> Download Resume</button></a>
 
                         <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
+                        <button className='btn  btn-space' onClick={() => this.showProjectDetails()}> Show Project Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
@@ -238,14 +246,14 @@ class ShowProfileComponent extends React.Component {
                                 <span className='box-head'>Course Details</span>
                                 <table>
                                     <thead><tr><th></th><th></th></tr></thead>
-                                    <tbody>   <tr><td>course :</td><td> {this.state.student.courseName}</td></tr>
-                                        <tr><td>batch :</td><td>{this.state.student.batch}</td></tr>
-                                        <tr><td>year :</td><td>{this.state.student.year}</td></tr></tbody>
+                                    <tbody>   <tr><td>course :</td><td> {this.state.student.course.courseName}</td></tr>
+                                        <tr><td>batch :</td><td>{this.state.student.course.batch}</td></tr>
+                                        <tr><td>year :</td><td>{this.state.student.course.year}</td></tr></tbody>
                                 </table>
 
                             </div>
 
-                            {/**Placement Details */}
+                            {/**Project Details */}
                         </div>
                     </div>
                 </div>

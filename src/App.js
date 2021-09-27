@@ -20,6 +20,7 @@ import ChangePhotoComponent from './components/user/ChangePhotoComponent';
 import EditProfileComponent from './components/user/EditProfileComponent';
 import ShowPlacementComponent from './components/user/ShowPlacementComponent'
 import ShowQuestionsComponent from './components/user/ShowQuestionsComponent';
+import ShowProjectDetailComponent from './components/user/ShowProjectDetailComponent';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path='/edit-profile' component={EditProfileComponent}/>
         <Route path='/placement-details' component={ShowPlacementComponent}/>
         <Route path='/show-question' component={ShowQuestionsComponent}/>
+        <Route path='/project-details' component={ShowProjectDetailComponent}/>
       </Switch>
     </Router>
     

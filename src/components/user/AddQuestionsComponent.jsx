@@ -39,6 +39,7 @@ saveQuestions=(e)=>{
   ApiService.addQuestion(que).then(resp=>{
     window.location.reload();
     console.log(resp.data);
+    alert('Question added!');
     this.setState({message : 'Question added successfully.'});
   }).catch(err=>{
     console.error("in err ",err.response.data);

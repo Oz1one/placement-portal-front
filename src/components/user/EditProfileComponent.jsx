@@ -56,7 +56,7 @@ class EditProfileComponent extends Component {
       passingYearPostGrad: this.state.passingYearPostGrad,
     };
     ApiService.updateStudent(student).then((resp)=>{
-        alert(resp.data);
+        alert('Profile updated!');
         
         document.getElementById('123').click();
     }).catch((err)=>{
@@ -314,7 +314,7 @@ onChange=(e)=>this.setState({[e.target.name]:e.target.value});
             className="btn btn-success"
             onClick={this.saveStudent}
           >
-            Register!
+            Update!
           </button>
         </form>
       </div>

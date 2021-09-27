@@ -58,6 +58,7 @@ class AddPlacementComponent extends Component{
       ApiService.addPlacementDetail(placementDetails).then(resp=>{
         console.log(resp.data);
         this.setState({message : 'Placement Detail added successfully.'});
+        alert('Placement details added!');
         document.getElementById('123').click();
       }).catch(err=>{
         console.error("in err ",err.response.data);

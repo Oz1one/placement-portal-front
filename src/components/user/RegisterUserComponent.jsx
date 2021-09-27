@@ -344,7 +344,7 @@ class RegisterUserComponent extends Component {
 
             <div className="form-group">
               <span className='increase-font'>Password:</span>
-              <input type='password' name="password" className="form-control width-control" value={this.state.password} onChange={this.onChange} />
+              <input type='password' placeholder='Password' name="password" className="form-control width-control" value={this.state.password} onChange={this.onChange} />
             </div>
 
             <div className="form-group">

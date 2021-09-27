@@ -32,7 +32,7 @@ class ChangePhotoComponent extends Component {
         ApiService.uploadPhoto(formData).then(resp=>{
             console.log(resp);
             console.log(resp.data);
-            
+            alert('Photo Changed!!');
             this.props.history.push({
                 pathname: '/profile',
                 state: { student: this.state.student }

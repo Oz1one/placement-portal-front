@@ -32,7 +32,7 @@ class UploadResumeComponent extends Component {
         ApiService.uploadResume(formData).then(resp=>{
             console.log(resp);
             console.log(resp.data);
-            
+            alert('Resume Uploaded!');
             this.props.history.push({
                 pathname: '/profile',
                 state: { student: this.state.student }
@@ -40,6 +40,7 @@ class UploadResumeComponent extends Component {
             })
       }).catch(err=>{
               console.log(err);
+              alert('Error');
               return 'failed to upload';
       })
           

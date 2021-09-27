@@ -26,6 +26,7 @@ class AddProjectDetailComponent extends Component{
             .then(resp => {
                 console.log(resp.data);//actual response data sent by back end
                 this.setState({message : 'Project Details Added Successfully.'});
+                alert('Project details added!!')
                 document.getElementById('123').click();
                 this.props.history.push('/showProfile');
             }).catch( err=>{

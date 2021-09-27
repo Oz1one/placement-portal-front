@@ -76,6 +76,7 @@ class ShowProfileComponent extends React.Component {
 
     logout() {
         sessionStorage.removeItem('studentid');
+        sessionStorage.removeItem('token');
         this.state.student = null;
         this.props.history.push('/');
         window.location.reload();
@@ -107,6 +108,13 @@ class ShowProfileComponent extends React.Component {
         });
       }
 
+      showPlacementDetails(){
+          this.props.history.push({
+              pathname:"/placement-details",
+              state: {student:this.state.student}
+          })
+      }
+
 
     render() {
 
@@ -116,6 +124,7 @@ class ShowProfileComponent extends React.Component {
         let otherId = this.state.student.id;
         let resumelink =
             "http://localhost:8080/public/download/resume/" + otherId;
+            
         let studentId = sessionStorage.getItem("studentid");
 
         return (
@@ -124,6 +133,8 @@ class ShowProfileComponent extends React.Component {
                     <div className='text-center'>
                         <a href={resumelink} target='_blank' rel='noopener noreferrer' >
                             <button className='btn  btn-space'> Download Resume</button></a>
+                            
+                            <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>

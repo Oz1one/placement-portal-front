@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import ApiService from "../../service/ApiService";
 import './AddUserComponent.css'
 
-const companyName = [
+let companyName = [
     {
       label: "TCS",
       value: "TCS",
@@ -16,12 +16,18 @@ const companyName = [
 class AddQuestionsComponent extends Component {
 
   constructor(props){
+    
     super(props);
+    
     this.state ={
         question: "",
-        companyName : "TCS",
+        companyName : props.location.state.placements[0].companyName,
+        placements : props.location.state.placements,
         message: null
     }
+    
+    companyName = [...(new Set(this.state.placements.map(p => p.companyName)))].map(c => {return {label : c,value : c}});
+  
     this.saveQuestions = this.saveQuestions.bind(this);
     
 }

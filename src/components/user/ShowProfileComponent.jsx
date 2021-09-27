@@ -51,17 +51,17 @@ class ShowProfileComponent extends React.Component {
     }
 
     addPlacementDetails() {
-        ApiService.fetchCompanies().then((resp)=>{
+        ApiService.fetchCompanies().then((resp) => {
             console.log(resp.data);
             this.props.history.push({
                 pathname: '/add-placement-details',
-                state: { companyNames : resp.data }
+                state: { companyNames: resp.data }
 
             });
 
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log(err);
-            
+
         }
         );
 
@@ -69,12 +69,24 @@ class ShowProfileComponent extends React.Component {
     }
 
     addQuestions() {
-        this.props.history.push({
-            pathname: '/add-questions',
 
-            state: { student: this.state.student }
+        ApiService.fetchPlacement(this.state.student.id)
+            .then((resp) => {
+                console.log("placement details " + resp.data);
+                if (resp.data[0]) {
+                    this.props.history.push({
+                        pathname: '/add-questions',
+                        state: { placements: resp.data }
+                    });
+                } else {
+                    alert("please add placement details first");
+                }
 
-        })
+            }).catch((err) => {
+                alert(err);
+                console.log(err);
+            });
+
 
     }
 
@@ -110,18 +122,18 @@ class ShowProfileComponent extends React.Component {
 
     editProfile() {
         this.props.history.push({
-          pathname: "/edit-profile",
-    
-          state: { student: this.state.student },
-        });
-      }
+            pathname: "/edit-profile",
 
-      showPlacementDetails(){
-          this.props.history.push({
-              pathname:"/placement-details",
-              state: {student:this.state.student}
-          })
-      }
+            state: { student: this.state.student },
+        });
+    }
+
+    showPlacementDetails() {
+        this.props.history.push({
+            pathname: "/placement-details",
+            state: { student: this.state.student }
+        })
+    }
 
 
     render() {
@@ -132,7 +144,7 @@ class ShowProfileComponent extends React.Component {
         let otherId = this.state.student.id;
         let resumelink =
             "http://localhost:8080/public/download/resume/" + otherId;
-            
+
         let studentId = sessionStorage.getItem("studentid");
 
         return (
@@ -141,8 +153,8 @@ class ShowProfileComponent extends React.Component {
                     <div className='text-center'>
                         <a href={resumelink} target='_blank' rel='noopener noreferrer' >
                             <button className='btn  btn-space'> Download Resume</button></a>
-                            
-                            <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
+
+                        <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.uploadResume()}> Upload Resume</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addPlacementDetails()}>Add Placement Details</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>

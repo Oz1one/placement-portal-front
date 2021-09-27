@@ -28,6 +28,7 @@ class UploadResumeComponent extends Component {
     uploadResume= (e) =>{
         e.preventDefault();
         const formData = new FormData();
+        if(this.state.resumefile){
         formData.append("studentResume", this.state.resumefile, this.state.resumefile.name);
         ApiService.uploadResume(formData).then(resp=>{
             console.log(resp);
@@ -42,7 +43,10 @@ class UploadResumeComponent extends Component {
               console.log(err);
               alert('Error');
               return 'failed to upload';
-      })
+      });}
+      else{
+          alert('Please select a file!');
+      }
           
       
   }
@@ -54,7 +58,7 @@ class UploadResumeComponent extends Component {
                 <h1>Upload Resume!!</h1>
                 <div className='form-group'>
                     
-                    <input type='file' className='form-control custom-width' onChange={this.onChange} />
+                    <input type='file' className='form-control custom-width' onChange={this.onChange} required />
                     <input type='submit' className='btn btn-success custom-button' value='Upload' onClick={this.uploadResume} />
                     
                     </div>

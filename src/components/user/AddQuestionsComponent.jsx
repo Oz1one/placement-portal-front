@@ -36,6 +36,7 @@ saveQuestions=(e)=>{
   e.preventDefault();
   let que={question:this.state.question, companyName : this.state.companyName};
   console.log(que.companyName);
+  if(this.state.question){
   ApiService.addQuestion(que).then(resp=>{
     window.location.reload();
     console.log(resp.data);
@@ -45,7 +46,10 @@ saveQuestions=(e)=>{
     console.error("in err ",err.response.data);
             //err.response.data => DTO on the server side : ErrorResponse
             alert(err.response.data.message);           
-      })
+      });}
+      else{
+        alert('Empty field! Please add question.')
+      }
   }
         
 

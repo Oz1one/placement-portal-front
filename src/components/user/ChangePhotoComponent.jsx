@@ -28,6 +28,7 @@ class ChangePhotoComponent extends Component {
     uploadPhoto= (e) =>{
         e.preventDefault();
         const formData = new FormData();
+        if(this.state.photofile){
         formData.append("studentPhoto", this.state.photofile, this.state.photofile.name);
         ApiService.uploadPhoto(formData).then(resp=>{
             console.log(resp);
@@ -40,9 +41,12 @@ class ChangePhotoComponent extends Component {
             })
       }).catch(err=>{
               console.log(err);
-              alert('Error');
+              alert(err);
               return 'failed to upload';
-      })
+      });}
+      else{
+          alert('Please select a photo!');
+      }
           
       
   }

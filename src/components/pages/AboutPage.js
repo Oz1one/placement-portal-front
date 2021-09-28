@@ -28,7 +28,10 @@ function AboutPage() {
           <b>personal, educational, professional, project</b> and all interview related details of the CDAC students.
 
         </p>
-        
+        <div className='loat-right'>
+        <h1>-Guided by:</h1>
+        <h2>Kishori Khadilkar</h2>
+        </div>
       </div>
     </>
   );

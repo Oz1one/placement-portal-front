@@ -100,6 +100,11 @@ class ApiService {
         return axios.get(PUBLIC_API_BASE_URL+"/fetch/project/"+id);
     }
 
+    deleteStudent(){
+        let token = sessionStorage.getItem('token');
+
+        return axios.delete(""+ STUDENT_API_BASE_URL + `/delete`,{headers : { Authorization:"Bearer "+ token }});
+    }
 
 }
 

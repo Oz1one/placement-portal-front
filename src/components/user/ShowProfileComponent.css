@@ -73,6 +73,17 @@
     margin-bottom: 5rem;
 }
 
+.red-button{
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    background-color: red;
+}
+
 
 @media screen and (max-width: 960px){
     .profile-data{

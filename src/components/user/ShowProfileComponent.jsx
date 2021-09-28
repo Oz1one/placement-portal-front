@@ -138,6 +138,22 @@ class ShowProfileComponent extends React.Component {
         })
     }
 
+    deleteStudent(){
+       
+        if(window.confirm("Delete Profile??")){
+           ApiService.deleteStudent().then(resp=>{
+               alert(resp.data.message);
+               sessionStorage.removeItem('token');
+               sessionStorage.removeItem('studentid');
+               this.state=null;
+               this.props.history.push('/');
+               window.location.reload();
+           }).catch(err=>{
+               alert(err.data.message);
+           })
+        }
+    }
+
 
     render() {
         
@@ -145,14 +161,9 @@ class ShowProfileComponent extends React.Component {
             this.props.history.push("/");
             return <></>;
           }
-
-
-        if (!this.state.student)
-            this.props.history.push('/');
         let otherId = this.state.student.id;
         let resumelink =
             "http://localhost:8080/public/download/resume/" + otherId;
-
         let studentId = sessionStorage.getItem("studentid");
 
         return (
@@ -161,6 +172,8 @@ class ShowProfileComponent extends React.Component {
                     <div className='text-center'>
                         <a href={resumelink} target='_blank' rel='noopener noreferrer' >
                             <button className='btn  btn-space'> Show Resume</button></a>
+                            
+                            
 
                         <button className='btn  btn-space' onClick={() => this.showPlacementDetails()}> Show Placement Details</button>
                         <button className='btn  btn-space' onClick={() => this.showProjectDetails()}> Show Project Details</button>
@@ -169,6 +182,7 @@ class ShowProfileComponent extends React.Component {
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addQuestions()}>Add Questions</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.addProject()}>Add Project details</button>
                         <button className={studentId == otherId ? 'btn btn-space' : 'hidden'} onClick={() => this.editProfile()}>edit profile</button>
+                        <button className={studentId == otherId ? 'red-button btn-space' : 'hidden'} onClick={()=>this.deleteStudent()}>Delete Profile</button>
                         <button className={studentId == otherId ? 'btn  btn-space' : 'hidden'} onClick={() => this.logout()}> Logout</button>
                     </div>
                 </div>

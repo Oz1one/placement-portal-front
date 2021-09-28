@@ -2,7 +2,7 @@ import React from 'react'
 import './ContactUs.css'
 import img11 from '../../images/Abhilash.jpeg';
 import img12 from '../../images/Ashish.jpeg';
-import img13 from '../../images/pexels-photo-220453.jpeg'
+import img13 from '../../images/Chirag.jpg'
 import img14 from '../../images/Rishabh.jpeg'
 
 
